@@ -1,41 +1,32 @@
-
-//import {Component, EventEmitter, Output} from '@angular/core'
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import {Component} from '@angular/core'
-//import { Post } from '../post.model';
 import { AccService } from '../account.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector:'app-account-register',
   templateUrl:'./register.component.html',
-  styleUrls:['./register.component.css']
+  styleUrls:['./register.component.css'],
+  animations:[trigger('fade',[
+    state('void',style({opacity:0})),
+    transition(':enter, :leave',[ // void <=> *
+      animate(200)
+    ]),
+  ])
+]
 })
 
 export class RegisterComponent{
-  enteredUsername='';
-  enteredPassword='';
+
   hide = true;
   constructor(public accService: AccService){}
-  //@Output() postCreated = new EventEmitter<Post>();
-  /*onAddPost(){
-    const post:Post = {
-      title:this.enteredTitle,
-      content:this.enteredContent
-    };
-    this.postCreated.emit(post);
-  }*/
+
   onAddAcc(form:NgForm){
     if(form.invalid){
       return;
     }
-    this.accService.addAcc(form.value.username, form.value.password);
+    this.accService.addAcc(form.value.username, form.value.password, form.value.fullName, form.value.email, form.value.phone, form.value.occupation, form.value.dob);
     form.resetForm();
-/*
-    const post:Post = {
-      title: form.value.title,
-      content: form.value.content
-    };
-    this.postCreated.emit(post);
-  }*/
+
 }
 }

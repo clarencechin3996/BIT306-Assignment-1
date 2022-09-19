@@ -9,21 +9,24 @@ import { HeaderLoginComponent } from './header/loginHeader/login.header';
 import { LoginComponent } from './account/login/login.component';
 import { HeaderRegisterComponent } from './header/registerHeader/register.header';
 import { RegisterComponent } from './account/register/register.component';
+import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatCardModule} from '@angular/material/card';
+import { MatButtonModule} from '@angular/material/button';
+import { MatExpansionModule} from '@angular/material/expansion';
+import { MatInputModule} from '@angular/material/input';
+import { MatIconModule} from '@angular/material/icon';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule} from '@angular/material/core';
+import { HeaderPageComponent } from './header/pageHeader/page.header';
 
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes:Routes = [
+  {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
-  {path:'register', component: RegisterComponent}
+  {path: '**', component: ViewRequestComponent }
 ]
 
 @NgModule({
@@ -32,9 +35,9 @@ const appRoutes:Routes = [
     HeaderLoginComponent,
     LoginComponent,
     HeaderRegisterComponent,
-    RegisterComponent
-
-
+    RegisterComponent,
+    HeaderPageComponent,
+    ViewRequestComponent
   ],
   imports: [
     BrowserModule,
