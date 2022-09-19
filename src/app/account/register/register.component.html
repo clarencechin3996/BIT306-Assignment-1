@@ -1,0 +1,52 @@
+<mat-card>
+    <app-header-register></app-header-register>
+    <form (submit)="onAddAcc(accountForm)" #accountForm="ngForm">
+
+        <mat-form-field appearance="outline" class="center-block first">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Username" name="username" ngModel required minlength="3" #username="ngModel">
+            <mat-error *ngIf="username.invalid">Please enter a username</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>Password</mat-label>
+            <input matInput rows="1" type="text" matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" ngModel required #password="ngModel">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+            <mat-error *ngIf="password.invalid">Please enter a password</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>FullName</mat-label>
+            <input matInput type="text" placeholder="Fullname" name="fullname" ngModel required minlength="3" #fullname="ngModel">
+            <mat-error *ngIf="username.invalid">Please enter your full name</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" placeholder="Email" name="email" ngModel required minlength="3" #email="ngModel">
+            <mat-error *ngIf="username.invalid">Please enter your email</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>Phone</mat-label>
+            <input matInput type="text" placeholder="Phone" name="phone" ngModel required minlength="3" #phone="ngModel">
+            <mat-error *ngIf="username.invalid">Please enter your phone number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>Occupation</mat-label>
+            <input matInput type="text" placeholder="Occupation" name="occupation" ngModel required minlength="3" #occupation="ngModel">
+            <mat-error *ngIf="username.invalid">Please enter your occupation</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="center-block">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+        <button class="loginBtn" mat-raised-button color="" type="button"><a routerLink="/login" mat-button color="primary">Login</a></button>
+        <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
+
+    </form>
+</mat-card>
