@@ -10,6 +10,8 @@ import { LoginComponent } from './account/login/login.component';
 import { HeaderRegisterComponent } from './header/registerHeader/register.header';
 import { RegisterComponent } from './account/register/register.component';
 import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
+import { HeaderPageComponent } from './header/pageHeader/page.header';
+import { HomePageComponent } from './volunteer/home-page/home-page.component';
 
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -19,13 +21,14 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
-import { HeaderPageComponent } from './header/pageHeader/page.header';
-
+import { MatListModule } from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
+  {path:'view-request', component: ViewRequestComponent},
   {path: '**', component: ViewRequestComponent }
 ]
 
@@ -37,7 +40,8 @@ const appRoutes:Routes = [
     HeaderRegisterComponent,
     RegisterComponent,
     HeaderPageComponent,
-    ViewRequestComponent
+    ViewRequestComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,8 @@ const appRoutes:Routes = [
     MatProgressBarModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
+    MatTabsModule,
     RouterModule.forRoot(
       appRoutes
     )
