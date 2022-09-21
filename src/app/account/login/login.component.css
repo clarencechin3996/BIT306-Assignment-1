@@ -3,9 +3,15 @@ textarea {
     width: 70%;
 }
 
+section {
+    background-color: #DEF5FF;
+    height: 930px;
+    overflow: hidden
+}
+
 mat-card {
     padding: 0;
-    margin: 100px 550px 100px 550px;
+    margin: 100px 600px 100px 600px;
     border-radius: 25px;
     overflow: hidden
 }

@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   animations:[trigger('fade',[
     state('void',style({opacity:0})),
     transition(':enter, :leave',[ // void <=> *
-      animate(200)
+      animate(100)
     ]),
   ])
 ]

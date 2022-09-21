@@ -3,6 +3,12 @@ textarea {
     width: 70%;
 }
 
+section {
+    background-color: #DEF5FF;
+    height: 1000px;
+    overflow: hidden
+}
+
 mat-card {
     padding: 0;
     margin: 100px 550px 100px 550px;
