@@ -1,0 +1,29 @@
+mat-panel-title,
+mat-panel-description,
+p {
+    display: block;
+    margin: 5px;
+}
+
+mat-expansion-panel {
+    margin: 20px;
+}
+
+mat-tab-group {
+    height: auto;
+}
+
+mat-expansion-panel-header p {
+    margin-right: 150px;
+}
+
+.aligned-with-icon {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 5px;
+    /* optional */
+}
+
+hr {
+    background-color: grey;
+}

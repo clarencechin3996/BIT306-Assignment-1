@@ -1,0 +1,125 @@
+<app-page-header></app-page-header>
+<mat-tab-group>
+    <mat-tab label="All">
+        <mat-accordion multi="true" *ngIf="request.length>0">
+            <div *ngFor=" let request of request ">
+                <mat-expansion-panel *ngIf="request.status==='NEW'">
+                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                        <mat-icon>school</mat-icon>
+                        <p>School :&nbsp; {{request.school_name}}</p>
+                        <mat-icon>location_city</mat-icon>
+                        <p>City :&nbsp; {{request.city}}</p>
+                        <mat-icon>date_range</mat-icon>
+                        <p>Request Date :&nbsp;{{request.request_date}} </p>
+                        <mat-icon>description</mat-icon>
+                        <p>Description :&nbsp; {{request.description}}</p>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <p><br></p>
+                        <div>
+                            <mat-icon>alarm</mat-icon>
+                            <span class="aligned-with-icon ">Proposed Time :&nbsp;&nbsp;{{request.proposed_time}}</span>
+                        </div>
+                        <div>
+                            <mat-icon>date_range</mat-icon>
+                            <span class="aligned-with-icon ">Proposed Date :&nbsp;&nbsp;{{request.proposed_date}}</span>
+                        </div>
+                        <div>
+                            <mat-icon>alarm</mat-icon>
+                            <span class="aligned-with-icon ">Student Level :&nbsp;&nbsp;{{request.student_level}}</span>
+                        </div>
+                        <div>
+                            <mat-icon> format_list_numbered_rtl</mat-icon>
+                            <span class="aligned-with-icon ">Number of Expected Student :&nbsp;&nbsp;{{request.number_expected_student}}</span>
+                        </div>
+                    </mat-panel-description>
+                    <mat-action-row>
+                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <p></p>
+            </div>
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="School">
+        <mat-accordion multi="true" *ngIf="request.length>0">
+            <div *ngFor=" let request of request ">
+                <mat-expansion-panel *ngIf="request.status==='NEW'">
+                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                        <mat-icon>school</mat-icon>
+                        <p>School :&nbsp; {{request.school_name}}</p>
+                        <mat-icon>description</mat-icon>
+                        <p>Description :&nbsp; {{request.description}}</p>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <p><br></p>
+                        <p>Proposed Time :&nbsp;&nbsp; {{request.proposed_time}}</p>
+                        <p>Proposed Date :&nbsp;&nbsp; {{request.proposed_date}}</p>
+                        <p>Student Level :&nbsp;&nbsp; {{request.student_level}}</p>
+                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.number_expected_student}}</p>
+                    </mat-panel-description>
+
+                    <mat-action-row>
+                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <p></p>
+            </div>
+
+
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="City">
+        <mat-accordion multi="true" *ngIf="request.length>0">
+            <div *ngFor=" let request of request ">
+                <mat-expansion-panel *ngIf="request.status==='NEW'">
+                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                        <mat-icon>location_city</mat-icon>
+                        <p>City :&nbsp; {{request.city}}</p>
+                        <mat-icon>description</mat-icon>
+                        <p>Description :&nbsp; {{request.description}}</p>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <p><br></p>
+                        <p>Proposed Time :&nbsp;&nbsp; {{request.proposed_time}}</p>
+                        <p>Proposed Date :&nbsp;&nbsp; {{request.proposed_date}}</p>
+                        <p>Student Level :&nbsp;&nbsp; {{request.student_level}}</p>
+                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.number_expected_student}}</p>
+                    </mat-panel-description>
+
+                    <mat-action-row>
+                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <p></p>
+            </div>
+
+        </mat-accordion>
+    </mat-tab>
+    <mat-tab label="Request Date">
+        <mat-accordion multi="true" *ngIf="request.length>0">
+            <div *ngFor=" let request of request ">
+                <mat-expansion-panel *ngIf="request.status==='NEW'">
+                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                        <mat-icon>date_range</mat-icon>
+                        <p>Request Date :&nbsp;{{request.request_date}} </p>
+                        <mat-icon>description</mat-icon>
+                        <p>Description :&nbsp; {{request.description}}</p>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <p><br></p>
+                        <p>Proposed Time :&nbsp;&nbsp; {{request.proposed_time}}</p>
+                        <p>Proposed Date :&nbsp;&nbsp; {{request.proposed_date}}</p>
+                        <p>Student Level :&nbsp;&nbsp; {{request.student_level}}</p>
+                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.number_expected_student}}</p>
+                    </mat-panel-description>
+
+                    <mat-action-row>
+                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </div>
+
+        </mat-accordion>
+    </mat-tab>
+</mat-tab-group>
