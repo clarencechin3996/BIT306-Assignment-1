@@ -1,19 +1,29 @@
-.example-small-box,
-.example-large-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
+mat-panel-title,
+mat-panel-description,
+p {
+    display: block;
+    margin: 5px;
 }
 
-.example-small-box {
-    height: 100px;
-    width: 100px;
+mat-expansion-panel {
+    margin: 20px;
 }
 
-.example-large-box {
-    height: 300px;
-    width: 300px;
+mat-tab-group {
+    height: auto;
+}
+
+mat-expansion-panel-header p {
+    margin-right: 150px;
+}
+
+.aligned-with-icon {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 5px;
+    /* optional */
+}
+
+hr {
+    background-color: grey;
 }

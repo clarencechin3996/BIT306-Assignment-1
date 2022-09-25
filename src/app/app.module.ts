@@ -29,7 +29,7 @@ const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'view-request', component: ViewRequestComponent},
-  {path: '**', component: ViewRequestComponent }
+  {path: '**', component: LoginComponent }
 ]
 
 @NgModule({
