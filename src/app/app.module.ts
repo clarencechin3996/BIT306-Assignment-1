@@ -24,12 +24,16 @@ import { MatNativeDateModule} from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterSchoolComponent } from './admin/register-school/register-school.component';
+import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
+import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
 
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'view-request', component: ViewRequestComponent},
-  {path: '**', component: LoginComponent }
+  {path: 'register-school', component: RegisterSchoolComponent},
+
 ]
 
 @NgModule({
@@ -41,7 +45,10 @@ const appRoutes:Routes = [
     RegisterComponent,
     HeaderPageComponent,
     ViewRequestComponent,
-    HomePageComponent
+    RegisterSchoolComponent,
+    HomePageComponent,
+    HeaderRegisterSchoolComponent,
+    SubmitRequestComponent
   ],
   imports: [
     BrowserModule,

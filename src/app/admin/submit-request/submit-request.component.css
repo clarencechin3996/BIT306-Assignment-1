@@ -1,0 +1,40 @@
+mat-form-field,
+textarea {
+    width: 70%;
+}
+
+section {
+    background-color: #DEF5FF;
+    height: 1150px;
+    overflow: hidden
+}
+
+mat-card {
+    padding: 0;
+    margin: 100px 550px 100px 550px;
+    border-radius: 25px;
+    overflow: hidden
+}
+
+.first {
+    margin-top: 30px;
+}
+
+button.regBtn {
+    margin: 15px 90px 20px 20px;
+    float: right;
+}
+
+button.loginBtn {
+    margin: 15px 10px 20px 95px;
+}
+
+.loginForm {
+    padding: 0 150px 0 150px;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
