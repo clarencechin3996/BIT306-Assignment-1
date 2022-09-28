@@ -53,9 +53,12 @@ export class AccService{ //Create a account class
 
   }
 
+  getRequest(){
+    return this.request;
+  }
 
-  AddRequest(description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string,){ // method to add account with arguments
-    const request: Request = {description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents}; // variable storing values of account
+  AddRequest(description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string, status: string, school_name: string, city: string){ // method to add account with arguments
+    const request: Request = {description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents, status: status, school_name: school_name, city: city}; // variable storing values of account
     this.request.push(request); // push the nre post into account array
   }
 }

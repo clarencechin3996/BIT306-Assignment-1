@@ -28,11 +28,14 @@ import { RegisterSchoolComponent } from './admin/register-school/register-school
 import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
 import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
 
+
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
   {path:'view-request', component: ViewRequestComponent},
   {path: 'register-school', component: RegisterSchoolComponent},
+  {path: 'submit-request', component: SubmitRequestComponent},
+
 
 ]
 
