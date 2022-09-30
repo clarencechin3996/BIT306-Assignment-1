@@ -1,12 +1,20 @@
 import { Component, OnInit } from "@angular/core";
 import { Request } from "src/app/account/request.modal";
 import { AccService } from "src/app/account/account.service";
+import {MatTableDataSource} from '@angular/material/table';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component ({
   selector: 'app-view-request',
   templateUrl: './view-request.component.html',
-  styleUrls:['./view-request.component.css']
-
+  styleUrls:['./view-request.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 export class ViewRequestComponent implements OnInit{
@@ -16,13 +24,24 @@ export class ViewRequestComponent implements OnInit{
     {request_date: '15-04-2022', description:'eewjuyd', school_name: 'B', city:'rbb',status:'NEW', proposed_time:'15:12',proposed_date:'11-03-2022',student_level:'medium',number_expected_student:'10'},
     {request_date: '15-04-2022', description:'eewjuyd', school_name: 'B', city:'rbb',status:'NEW', proposed_time:'15:12',proposed_date:'11-03-2022',student_level:'medium',number_expected_student:'10'}
   ]*/
-
-  requests : Request[]=[];
+  requests : Request[] =[ ];
+  dataSource!: MatTableDataSource<Request>;
 
   constructor(public accService:AccService){
 
   } 
+
+  displayedColumns: string[] = ['Description', 'Date & Time', 'Student Level', 'Number of Expected Student','School Name', 'City'];
+  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+  expandedElement!: Request | null;
+
   ngOnInit(){
-      this.requests = this.accService.getRequest();
-    }
+    this.requests = this.accService.getRequest();
+    this.dataSource = new MatTableDataSource(this.requests);
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }

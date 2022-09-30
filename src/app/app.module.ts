@@ -12,6 +12,7 @@ import { RegisterComponent } from './account/register/register.component';
 import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
 import { HeaderPageComponent } from './header/pageHeader/page.header';
 import { HomePageComponent } from './volunteer/home-page/home-page.component';
+import {MatTableModule} from '@angular/material/table'; 
 
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -68,6 +69,7 @@ const appRoutes:Routes = [
     MatNativeDateModule,
     MatListModule,
     MatTabsModule,
+    MatTableModule,
     RouterModule.forRoot(
       appRoutes
     )
