@@ -40,51 +40,58 @@
                 <p></p>
             </div>
         </mat-accordion>-->
-        <mat-form-field appearance="standard" style="width: 100%;">
+
+        <mat-form-field appearance="standard" class="filter">
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
         </mat-form-field>
 
-        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" style="width: 100%;">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
 
             <!-- Position Column -->
             <ng-container matColumnDef="Description">
-                <th mat-header-cell *matHeaderCellDef> Description </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 400px;">
+                    <mat-icon>description</mat-icon>
+                    <span class="aligned-with-icon">Description</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.description}} </td>
             </ng-container>
 
             <!-- Name Column -->
             <ng-container matColumnDef="Date & Time">
-                <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 150px;">
+                    <mat-icon>date_range</mat-icon>
+                    <span class="aligned-with-icon">Date & Time</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
             </ng-container>
 
             <!-- Weight Column -->
             <ng-container matColumnDef="Student Level">
-                <th mat-header-cell *matHeaderCellDef> Student Level </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 200px;">
+                    <mat-icon>bar_chart</mat-icon>
+                    <span class="aligned-with-icon">Student Level</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.studentlevel}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="Number of Expected Student">
-                <th mat-header-cell *matHeaderCellDef> Number of Expected Student </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                    <mat-icon>format_list_numbered_rtl</mat-icon>
+                    <span class="aligned-with-icon">Number of Expected Student</span> </th>
                 <td mat-cell *matCellDef="let element"> {{element.numofexpectedstudents}} </td>
             </ng-container>
 
             <ng-container matColumnDef="School Name">
-                <th mat-header-cell *matHeaderCellDef>
-
-                    <div>
-                        <mat-icon>alarm</mat-icon>
-                        <span class="aligned-with-icon ">Proposed Time :&nbsp;&nbsp;{{request.proposed_time}}</span>
-                    </div>
+                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
                     <mat-icon>school</mat-icon>
-                    School </th>
+                    <span class="aligned-with-icon">School</span>
+                </th>
                 <td mat-cell *matCellDef="let element"> {{element.school_name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="City">
-                <th mat-header-cell *matHeaderCellDef> City </th>
+                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                    <mat-icon>location_city</mat-icon>
+                    <span class="aligned-with-icon ">City</span></th>
                 <td mat-cell *matCellDef="let element"> {{element.city}} </td>
             </ng-container>
 
@@ -103,12 +110,22 @@
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
                     <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                        <div class="example-element-diagram">
-                            <div class="example-element-position"> {{element.description}} </div>
-                            <div class="example-element-symbol"> {{element.datetime}} </div>
-
+                        <div>
+                            <p style="margin-left: 0;">Date & Time: {{element.datetime}}</p>
                         </div>
-
+                        <div>
+                            <p style="margin-left: 0;">Student Level: {{element.studentlevel}}</p>
+                        </div>
+                        <div>
+                            <p style="margin-left: 0;">Number of student: {{element.numofexpectedstudents}}</p>
+                        </div>
+                        <br>
+                        <hr>
+                        <mat-action-row style="float: left;">
+                            <br>
+                            <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openDialog('0ms', '0ms')">Submit Offer</button>
+                            <p><br></p>
+                        </mat-action-row>
                     </div>
                 </td>
             </ng-container>
@@ -116,9 +133,6 @@
             <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
             </tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-
-
-
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>

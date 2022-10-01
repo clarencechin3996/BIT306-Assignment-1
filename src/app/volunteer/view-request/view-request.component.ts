@@ -3,6 +3,7 @@ import { Request } from "src/app/account/request.modal";
 import { AccService } from "src/app/account/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component ({
   selector: 'app-view-request',
@@ -18,17 +19,16 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 
 export class ViewRequestComponent implements OnInit{
-  /*request = [
-    {request_date: '12-11-2022', description:'dd', school_name: 'H', city:'cdd',status:'NEW', proposed_time:'12:10',proposed_date:'01-09-2022',student_level:'high',number_expected_student:'11'},
-    {request_date: '22-01-2022', description:'dvewcewd', school_name: 'A', city:'cee',status:'PENDING', proposed_time:'11:10',proposed_date:'01-01-2022',student_level:'low',number_expected_student:'12'},
-    {request_date: '15-04-2022', description:'eewjuyd', school_name: 'B', city:'rbb',status:'NEW', proposed_time:'15:12',proposed_date:'11-03-2022',student_level:'medium',number_expected_student:'10'},
-    {request_date: '15-04-2022', description:'eewjuyd', school_name: 'B', city:'rbb',status:'NEW', proposed_time:'15:12',proposed_date:'11-03-2022',student_level:'medium',number_expected_student:'10'}
-  ]*/
+  request = [
+    {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
+    {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
+    {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
+
+  ]
   requests : Request[] =[ ];
-  dataSource!: MatTableDataSource<Request>;
+  //dataSource!: MatTableDataSource<Request>;
 
-  constructor(public accService:AccService){
-
+  constructor(public dialog: MatDialog, public accService:AccService){
   } 
 
   displayedColumns: string[] = ['Description', 'Date & Time', 'Student Level', 'Number of Expected Student','School Name', 'City'];
@@ -37,11 +37,28 @@ export class ViewRequestComponent implements OnInit{
 
   ngOnInit(){
     this.requests = this.accService.getRequest();
-    this.dataSource = new MatTableDataSource(this.requests);
   }
+    dataSource = new MatTableDataSource(this.request);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(RequestDialogComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 }
+@Component({
+  selector: 'request-dialog',
+  templateUrl: 'request-dialog.component.html',
+})
+
+export class RequestDialogComponent {
+  constructor(public dialogRef: MatDialogRef<RequestDialogComponent>) {}
+}
+
