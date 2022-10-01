@@ -12,6 +12,11 @@ import { RegisterComponent } from './account/register/register.component';
 import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
 import { HeaderPageComponent } from './header/pageHeader/page.header';
 import { HomePageComponent } from './volunteer/home-page/home-page.component';
+import {MatTableModule} from '@angular/material/table'; 
+import { RegisterSchoolComponent } from './admin/register-school/register-school.component';
+import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
+import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
+import { RequestDialogComponent } from './volunteer/view-request/view-request.component';
 
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -22,12 +27,10 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule} from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
-import { RegisterSchoolComponent } from './admin/register-school/register-school.component';
-import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
-import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
-
+import {MatMenuModule} from '@angular/material/menu'; 
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
@@ -51,7 +54,8 @@ const appRoutes:Routes = [
     RegisterSchoolComponent,
     HomePageComponent,
     HeaderRegisterSchoolComponent,
-    SubmitRequestComponent
+    SubmitRequestComponent,
+    RequestDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +72,9 @@ const appRoutes:Routes = [
     MatNativeDateModule,
     MatListModule,
     MatTabsModule,
+    MatTableModule,
+    MatMenuModule,
+    MatDialogModule,
     RouterModule.forRoot(
       appRoutes
     )
