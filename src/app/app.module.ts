@@ -16,6 +16,8 @@ import { RegisterSchoolComponent } from './admin/register-school/register-school
 import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
 import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
 import { RequestDialogComponent } from './volunteer/view-request/view-request.component';
+import { JustHeaderComponent } from './header/header/header.component';
+import { JustFooterComponent } from './footer/footer.component';
 
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -57,7 +59,9 @@ const appRoutes:Routes = [
     HomePageComponent,
     HeaderRegisterSchoolComponent,
     SubmitRequestComponent,
-    RequestDialogComponent
+    RequestDialogComponent,
+    JustHeaderComponent,
+    JustFooterComponent
   ],
   imports: [
     BrowserModule,

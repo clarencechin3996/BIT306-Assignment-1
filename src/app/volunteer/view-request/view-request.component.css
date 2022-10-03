@@ -24,6 +24,12 @@ mat-expansion-panel-header p {
     /* optional */
 }
 
+section {
+    background-color: #DEF5FF;
+    height: 930px;
+    overflow: hidden
+}
+
 hr {
     background-color: grey;
 }
