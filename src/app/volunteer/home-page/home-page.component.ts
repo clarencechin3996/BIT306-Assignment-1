@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component ({
-  selector: 'volunteer-home-page',
+  selector: 'app-view-request',
   templateUrl: './home-page.component.html',
   styleUrls:['./home-page.component.css']
 
