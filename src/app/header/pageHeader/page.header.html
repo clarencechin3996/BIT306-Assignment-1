@@ -1,8 +1,21 @@
 <mat-toolbar color="primary">
 
-    <span class="title">&nbsp;&nbsp;School HELP</span>
+    <span class="title">&nbsp;&nbsp;<a routerLink="/volunteer-home-page" mat-button color="white" style="font-size: 25px;">School HELP</a></span>
 
-    <button type="button" mat-icon-button class="view favorite-icon">
-        View Request
+    <button type="button" mat-icon-button class="view favorite-icon"><a routerLink="/view-request" mat-button color="white">View Request</a>
     </button>
+    <div style="margin-left: 1350px;">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon style="transform: scale(1.5);">account_circle</mat-icon>
+      </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Log Out</span>
+        </button>
+
+        </mat-menu>
+    </div>
+
+
 </mat-toolbar>

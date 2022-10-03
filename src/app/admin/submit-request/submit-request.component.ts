@@ -2,6 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import {Component} from '@angular/core';
 import { AccService } from 'src/app/account/account.service';
 import { NgForm } from '@angular/forms';
+import { from } from 'rxjs';
 
 @Component({
   selector:'app-admin-submit-request',
@@ -26,8 +27,8 @@ export class SubmitRequestComponent{
       if(form.invalid){
         return;
       }
-
-      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents);
+   
+      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='', form.value.city='');
       form.resetForm();
   
 
