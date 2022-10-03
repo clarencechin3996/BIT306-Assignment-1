@@ -23,10 +23,9 @@ export class ViewRequestComponent implements OnInit{
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
-
   ]
   requests : Request[] =[ ];
-  //dataSource!: MatTableDataSource<Request>;
+  dataSource!: MatTableDataSource<Request>;
 
   constructor(public dialog: MatDialog, public accService:AccService){
   } 
@@ -36,9 +35,10 @@ export class ViewRequestComponent implements OnInit{
   expandedElement!: Request | null;
 
   ngOnInit(){
-    this.requests = this.accService.getRequest();
+    this.requests = this.accService.getRequest();    
+    this.dataSource = new MatTableDataSource(this.requests);
+
   }
-    dataSource = new MatTableDataSource(this.request);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

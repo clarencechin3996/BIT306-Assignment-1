@@ -12,7 +12,6 @@ import { RegisterComponent } from './account/register/register.component';
 import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
 import { HeaderPageComponent } from './header/pageHeader/page.header';
 import { HomePageComponent } from './volunteer/home-page/home-page.component';
-import {MatTableModule} from '@angular/material/table'; 
 import { RegisterSchoolComponent } from './admin/register-school/register-school.component';
 import { HeaderRegisterSchoolComponent } from './header/RegisterSchoolHeader/registerschool.header';
 import { SubmitRequestComponent } from './admin/submit-request/submit-request.component';
@@ -31,6 +30,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatTableModule} from '@angular/material/table'; 
 
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
@@ -38,6 +38,8 @@ const appRoutes:Routes = [
   {path:'view-request', component: ViewRequestComponent},
   {path: 'register-school', component: RegisterSchoolComponent},
   {path: 'submit-request', component: SubmitRequestComponent},
+  {path: 'volunteer-home-page', component: HomePageComponent},
+
 
 
 ]
