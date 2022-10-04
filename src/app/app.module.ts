@@ -18,6 +18,8 @@ import { SubmitRequestComponent } from './admin/submit-request/submit-request.co
 import { RequestDialogComponent } from './volunteer/view-request/view-request.component';
 import { JustHeaderComponent } from './header/header/header.component';
 import { JustFooterComponent } from './footer/footer.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -80,6 +82,7 @@ const appRoutes:Routes = [
     MatTabsModule,
     MatTableModule,
     MatMenuModule,
+    MatSelectModule,
     MatDialogModule,
     RouterModule.forRoot(
       appRoutes

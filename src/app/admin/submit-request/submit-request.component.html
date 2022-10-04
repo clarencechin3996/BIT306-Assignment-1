@@ -1,29 +1,88 @@
 <app-page-header></app-page-header>
-<section>
-    <mat-card @fade>
-    <form (submit)="onAddRequest(accountForm)" #accountForm="ngForm">
-        <mat-form-field appearance="outline" class="center-block">
-            <mat-label>Description of Request</mat-label>
-            <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="3" #description="ngModel">
-            <mat-error *ngIf="description.invalid">Please enter the description of request</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="center-block">
-            <mat-label>Proposed Date and Time</mat-label>
-            <input matInput type="datetime-local" placeholder="Date and Time" name="datetime" ngModel required minlength="3" #datetime="ngModel">
-            <mat-error *ngIf="datetime.invalid">Please select a Date and Time</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="center-block">
-            <mat-label>Student Level</mat-label>
-            <input matInput type="text" placeholder="Student Level" name="studentlevel" ngModel required minlength="3" #studentlevel="ngModel">
-                    <mat-error *ngIf="studentlevel.invalid">Please enter the Student Level</mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="center-block">
-            <mat-label>Number of Expected Students</mat-label>
-            <input matInput type="text" placeholder="Number of Expected Students" name="numofexpectedstudents" ngModel required minlength="3" #numofexpectedstudents="ngModel">
-            <mat-error *ngIf="numofexpectedstudents.invalid">Please enter the number of expected students</mat-error>
-        </mat-form-field>
+<mat-tab-group>
+    <mat-tab label="Submit Request">
+        <section>
+            <mat-card @fade>
+                <form (submit)="onAddRequest(accountForm)" #accountForm="ngForm">
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Description of Request</mat-label>
+                        <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="3" #description="ngModel">
+                        <mat-error *ngIf="description.invalid">Please enter the description of request</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Proposed Date and Time</mat-label>
+                        <input matInput type="datetime-local" placeholder="Date and Time" name="datetime" ngModel required minlength="3" #datetime="ngModel">
+                        <mat-error *ngIf="datetime.invalid">Please select a Date and Time</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Student Level</mat-label>
+                        <input matInput type="text" placeholder="Student Level" name="studentlevel" ngModel required minlength="3" #studentlevel="ngModel">
+                        <mat-error *ngIf="studentlevel.invalid">Please enter the Student Level</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Number of Expected Students</mat-label>
+                        <input matInput type="text" placeholder="Number of Expected Students" name="numofexpectedstudents" ngModel required minlength="3" #numofexpectedstudents="ngModel">
+                        <mat-error *ngIf="numofexpectedstudents.invalid">Please enter the number of expected students</mat-error>
+                    </mat-form-field>
 
-        <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
-    </form>
-</mat-card>
-</section>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Request ID</mat-label>
+
+                        <input matInput type="text" placeholder="Request ID" name="requestID" ngModel required minlength="3" #requestID="ngModel">
+                        <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
+                    </mat-form-field>
+                    <div>
+                        <mat-form-field appearance="outline" class="center-block">
+                            <mat-label>Request type</mat-label>
+
+                            <input matInput type="text" value="tutorial" placeholder="Request type" name="requesttype" ngModel minlength="3" #requesttype="ngModel">
+
+                            <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
+                </form>
+            </mat-card>
+        </section>
+    </mat-tab>
+    <mat-tab label="Submit Resource">
+        <section>
+            <mat-card @fade>
+                <form (submit)="onAddRequest(accountForm1)" #accountForm1="ngForm">
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Description of Resource</mat-label>
+                        <input matInput type="text" placeholder="Resource Description" name="resourcedescription" ngModel required minlength="3" #resourcedescription="ngModel">
+                        <mat-error *ngIf="resourcedescription.invalid">Please enter the resource description</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-select name="resourcetype" placeholder="Resource type" [(ngModel)]="resourcetype">
+                            <mat-label>Resource Type</mat-label>
+                            <mat-option value="mobiledevice">Mobile Device</mat-option>
+                            <mat-option value="personalcomp">Personal Computer</mat-option>
+                            <mat-option value="networkingequipment">Networking Equipment</mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Number of Resources Required</mat-label>
+                        <input matInput type="text" placeholder="Number Required" name="resourcenum" ngModel required minlength="1" #resourcenum="ngModel">
+                        <mat-error *ngIf="studentlevel.invalid">Please enter the number of resources required</mat-error>
+                    </mat-form-field>
+
+                    <div>
+                        <mat-form-field appearance="outline" class="center-block">
+                            <mat-label>Request type</mat-label>
+
+                            <input matInput type="text" value="resource" placeholder="Request type" name="requesttype" ngModel minlength="3" #requesttype="ngModel">
+
+                            <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
+                </form>
+            </mat-card>
+        </section>
+    </mat-tab>
+</mat-tab-group>

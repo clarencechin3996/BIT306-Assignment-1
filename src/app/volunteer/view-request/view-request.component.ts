@@ -30,7 +30,7 @@ export class ViewRequestComponent implements OnInit{
   constructor(public dialog: MatDialog, public accService:AccService){
   } 
 
-  displayedColumns: string[] = ['Description', 'Date & Time', 'Student Level', 'Number of Expected Student','School Name', 'City'];
+  displayedColumns: string[] = ['Description','School Name', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: Request | null;
 
@@ -47,7 +47,8 @@ export class ViewRequestComponent implements OnInit{
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(RequestDialogComponent, {
-      width: '250px',
+      width: '700px',
+      height: '300px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
