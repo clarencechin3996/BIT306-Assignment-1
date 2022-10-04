@@ -19,6 +19,7 @@ import { RequestDialogComponent } from './volunteer/view-request/view-request.co
 import { JustHeaderComponent } from './header/header/header.component';
 import { JustFooterComponent } from './footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ReviewOfferComponent } from './admin/review-offer/review-offer.component';
 
 
 import { MatCardModule} from '@angular/material/card';
@@ -43,8 +44,7 @@ const appRoutes:Routes = [
   {path: 'register-school', component: RegisterSchoolComponent},
   {path: 'submit-request', component: SubmitRequestComponent},
   {path: 'volunteer-home-page', component: HomePageComponent},
-
-
+  {path: 'review-offer', component: ReviewOfferComponent},
 
 ]
 
@@ -63,7 +63,8 @@ const appRoutes:Routes = [
     SubmitRequestComponent,
     RequestDialogComponent,
     JustHeaderComponent,
-    JustFooterComponent
+    JustFooterComponent,
+    ReviewOfferComponent
   ],
   imports: [
     BrowserModule,

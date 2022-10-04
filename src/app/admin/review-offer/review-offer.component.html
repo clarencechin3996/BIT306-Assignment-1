@@ -1,0 +1,116 @@
+<app-page-header></app-page-header>
+
+<!--        <mat-accordion multi="true" *ngIf="requests.length>0">
+            <div *ngFor=" let request of requests ">
+                <mat-expansion-panel *ngIf="request.status ==='NEW'">
+                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
+                        <mat-icon>school</mat-icon>
+                        <p>School :&nbsp; {{request.school_name}}</p>
+                        <mat-icon>location_city</mat-icon>
+                        <p>City :&nbsp; {{request.city}}</p>
+
+
+
+
+                        <mat-icon>description</mat-icon>
+                        <p>Description :&nbsp; {{request.description}}</p>
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        <p><br></p>
+
+                        <div>
+                            <mat-icon>date_range</mat-icon>
+                            <span class="aligned-with-icon ">Proposed Date and Time:&nbsp;&nbsp;{{request.datetime}}</span>
+                        </div>
+                        <div>
+                            <mat-icon>alarm</mat-icon>
+                            <span class="aligned-with-icon ">Student Level :&nbsp;&nbsp;{{request.studentlevel}}</span>
+                        </div>
+                        <div>
+                            <mat-icon> format_list_numbered_rtl</mat-icon>
+                            <span class="aligned-with-icon ">Number of Expected Student
+                :&nbsp;&nbsp;{{request.numofexpectedstudents}}</span>
+                        </div>
+                    </mat-panel-description>
+                    <mat-action-row>
+                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+                <p></p>
+            </div>
+        </mat-accordion>-->
+
+<section>
+    <mat-form-field appearance="standard" class="filter">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef style="width: 400px;">
+                <mat-icon>description</mat-icon>
+                <span class="aligned-with-icon">Description</span> </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.requesttype == 'tutorial'">{{element.description}} </div>
+                <div *ngIf="element.requesttype == 'resource'">{{element.resourcedescription}} </div>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="School Name">
+            <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                <mat-icon>school</mat-icon>
+                <span class="aligned-with-icon">School</span>
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.school_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                <mat-icon>location_city</mat-icon>
+                <span class="aligned-with-icon ">City</span></th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expand">
+            <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+                  <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+                  <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+                <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <div></div>
+                    <div>
+                        <p style="margin-left: 0;">Date & Time: {{element.datetime}}</p>
+                    </div>
+                    <div>
+                        <p style="margin-left: 0;">Student Level: {{element.studentlevel}}</p>
+                    </div>
+                    <div>
+                        <p style="margin-left: 0;">Number of student: {{element.numofexpectedstudents}}</p>
+                    </div>
+                    <br>
+                    <hr>
+
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+</section>
