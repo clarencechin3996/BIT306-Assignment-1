@@ -30,7 +30,7 @@ export class SubmitRequestComponent{
         return;
       }
   
-      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='', form.value.city='',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requestID, form.value.requesttype);
+      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='SJK Henu', form.value.city='Kajang',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requestID, form.value.requesttype,form.value.requestdate,form.value.remarks, form.value.volunteerUsername='ben');
       form.resetForm();
   
       }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Request } from "src/app/account/request.modal";
+import { Account } from "src/app/account/account.model";
 import { AccService } from "src/app/account/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -20,8 +21,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 export class ReviewOfferComponent implements OnInit{
 
-  requests : Request[] =[ ];
+  requests : Request[] =[];
+  users: Account[]=[];
+
   dataSource!: MatTableDataSource<Request>;
+
 
   constructor(public dialog: MatDialog, public accService:AccService){
   } 
@@ -32,8 +36,8 @@ export class ReviewOfferComponent implements OnInit{
 
   ngOnInit(){
     this.requests = this.accService.getRequest();    
+    this.users = this.accService.getAcc();
     this.dataSource = new MatTableDataSource(this.requests);
-
   }
 
   applyFilter(event: Event) {
