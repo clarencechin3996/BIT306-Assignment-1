@@ -8,11 +8,15 @@ import { Request } from './request.modal';
 @Injectable({providedIn: 'root'})
 
 export class AccService{ //Create a account class
-  private account:Account[]=[]; //Set type to Account array(model) and assign to empty array
+  user1: Account = {username:'ben',password:'123',fullName:'Ben',email:'123@gmail.com',phone:'12345',occupation:'Plumber', dob:'12-11-2001'};
+
+  private account:Account[]=[this.user1]; //Set type to Account array(model) and assign to empty array
   private schoolAdmin:SchoolAdmin[]=[]; //Set type to SchoolAdmin array(model) and assign to empty array
   private schoolHelpAdmin:SchoolHelpAdmin[]=[]; //Set type to SchoolHelpAdmin array(model) and assign to empty array
   private school:School[]=[]; //Set type to School array(model) and assign to empty array
   private request:Request[]=[]; //Set type to Requesy array(model) and assign to empty array
+
+
 
 
   //to retrieve the post

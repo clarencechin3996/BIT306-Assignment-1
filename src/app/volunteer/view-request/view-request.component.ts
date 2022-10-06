@@ -24,7 +24,7 @@ export class ViewRequestComponent implements OnInit{
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
   ]
-  requests : Request[] =[ ];
+  requests : Request[] =[];
   dataSource!: MatTableDataSource<Request>;
 
   constructor(public dialog: MatDialog, public accService:AccService){

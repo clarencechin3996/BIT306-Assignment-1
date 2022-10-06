@@ -22,11 +22,9 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 export class ReviewOfferComponent implements OnInit{
 
   requests : Request[] =[];
-  users: Account[]=[];
+  users : Account[]=[];
 
   dataSource!: MatTableDataSource<Request>;
-
-
   constructor(public dialog: MatDialog, public accService:AccService){
   } 
 
@@ -39,13 +37,26 @@ export class ReviewOfferComponent implements OnInit{
     this.users = this.accService.getAcc();
     this.dataSource = new MatTableDataSource(this.requests);
   }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(ReviewOfferDialogComponent, {
+      width: '700px',
+      height: '300px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+}
+@Component({
+  selector: 'review-offer-dialog',
+  templateUrl: 'review-offer-dialog.component.html',
+})
 
-
+export class ReviewOfferDialogComponent {
+  constructor(public dialogRef: MatDialogRef<ReviewOfferDialogComponent>) {}
 }
 
 
