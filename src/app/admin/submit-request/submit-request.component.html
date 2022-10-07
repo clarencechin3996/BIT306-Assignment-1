@@ -3,7 +3,7 @@
     <mat-tab label="Submit Tutorial">
         <section>
             <mat-card @fade>
-                <form (submit)="onAddRequest(accountForm)" #accountForm="ngForm">
+                <form (submit)="onAddTutorialRequest(accountForm)" #accountForm="ngForm">
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Description of Request</mat-label>
                         <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="3" #description="ngModel">
@@ -49,7 +49,7 @@
     <mat-tab label="Submit Resource">
         <section>
             <mat-card @fade>
-                <form (submit)="onAddRequest(accountForm1)" #accountForm1="ngForm">
+                <form (submit)="onAddResourceRequest(accountForm1)" #accountForm1="ngForm">
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Description of Resource</mat-label>
                         <input matInput type="text" placeholder="Resource Description" name="resourcedescription" ngModel required minlength="3" #resourcedescription="ngModel">
@@ -58,9 +58,9 @@
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-select name="resourcetype" placeholder="Resource type" [(ngModel)]="resourcetype">
                             <mat-label>Resource Type</mat-label>
-                            <mat-option value="mobiledevice">Mobile Device</mat-option>
-                            <mat-option value="personalcomp">Personal Computer</mat-option>
-                            <mat-option value="networkingequipment">Networking Equipment</mat-option>
+                            <mat-option value="Mobile Device">Mobile Device</mat-option>
+                            <mat-option value="Personal Computer">Personal Computer</mat-option>
+                            <mat-option value="Networking Equipment">Networking Equipment</mat-option>
                         </mat-select>
 
                     </mat-form-field>

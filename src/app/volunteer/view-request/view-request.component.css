@@ -35,13 +35,13 @@ hr {
 }
 
 table {
-    width: 99%;
-    margin: 5px;
+    width: 60%;
+    margin: auto;
 }
 
 .filter {
-    width: 97%;
-    margin: 20px;
+    width: 60%;
+    margin-left: 340px;
 }
 
 tr.example-detail-row {

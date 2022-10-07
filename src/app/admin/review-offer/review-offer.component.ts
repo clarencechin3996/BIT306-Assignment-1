@@ -41,8 +41,17 @@ export class ReviewOfferComponent implements OnInit{
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(ReviewOfferDialogComponent, {
+
+  openAcceptOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(AcceptOfferDialogComponent, {
+      width: '700px',
+      height: '300px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+  openCloseOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(CloseOfferDialogComponent, {
       width: '700px',
       height: '300px',
       enterAnimationDuration,
@@ -51,12 +60,21 @@ export class ReviewOfferComponent implements OnInit{
   }
 }
 @Component({
-  selector: 'review-offer-dialog',
-  templateUrl: 'review-offer-dialog.component.html',
+  selector: 'accept-offer-dialog',
+  templateUrl: 'accept-offer-dialog.component.html',
 })
 
-export class ReviewOfferDialogComponent {
-  constructor(public dialogRef: MatDialogRef<ReviewOfferDialogComponent>) {}
+export class AcceptOfferDialogComponent {
+  constructor(public dialogRef: MatDialogRef<AcceptOfferDialogComponent>) {}
+}
+
+@Component({
+  selector: 'close-offer-dialog',
+  templateUrl: 'close-offer-dialog.component.html',
+})
+
+export class CloseOfferDialogComponent {
+  constructor(public dialogRef: MatDialogRef<CloseOfferDialogComponent>) {}
 }
 
 

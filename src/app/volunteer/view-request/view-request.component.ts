@@ -37,7 +37,6 @@ export class ViewRequestComponent implements OnInit{
   ngOnInit(){
     this.requests = this.accService.getRequest();    
     this.dataSource = new MatTableDataSource(this.requests);
-
   }
 
   applyFilter(event: Event) {
