@@ -1,5 +1,4 @@
 export interface Request{
-  
   description: string;
   datetime: Date;
   studentlevel: string;
@@ -7,4 +6,12 @@ export interface Request{
   status: string;
   school_name: string;
   city: string;
+  resourcedescription: string;
+  resourcetype: string;
+  resourcenum: string;
+  requestID: string;
+  requesttype: string;
+  requestdate: Date;
+  remarks: string;
+  volunteerUsername: string;
 }

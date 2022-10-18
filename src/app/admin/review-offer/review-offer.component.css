@@ -1,0 +1,96 @@
+mat-panel-title,
+mat-panel-description,
+p {
+    display: block;
+    margin: 5px;
+}
+
+mat-expansion-panel {
+    margin: 20px;
+}
+
+mat-tab-group {
+    height: auto;
+}
+
+mat-expansion-panel-header p {
+    margin-right: 150px;
+}
+
+.aligned-with-icon {
+    position: absolute;
+    margin-top: 3px;
+    margin-left: 5px;
+    /* optional */
+}
+
+section {
+    background-color: whitesmoke;
+    height: 930px;
+    overflow: hidden
+}
+
+hr {
+    background-color: grey;
+}
+
+table {
+    width: 60%;
+    margin: auto;
+}
+
+.filter {
+    width: 60%;
+    margin-left: 345px;
+}
+
+tr.example-detail-row {
+    height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+}
+
+.example-element-row td {
+    border-bottom-width: 0;
+}
+
+.example-element-detail {
+    overflow: hidden;
+    height: auto;
+}
+
+.example-element-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+}
+
+.example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.example-element-description {
+    padding: 1px;
+}
+
+.example-element-description-attribution {
+    opacity: 0.5;
+}
+
+.aligned-with-icon {
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 5px;
+    /* optional */
+}

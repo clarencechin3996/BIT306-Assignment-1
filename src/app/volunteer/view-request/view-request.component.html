@@ -1,7 +1,6 @@
-<app-page-header></app-page-header>
-<mat-tab-group>
-    <mat-tab label="All">
-        <!--        <mat-accordion multi="true" *ngIf="requests.length>0">
+<page2-header></page2-header>
+
+<!--        <mat-accordion multi="true" *ngIf="requests.length>0">
             <div *ngFor=" let request of requests ">
                 <mat-expansion-panel *ngIf="request.status ==='NEW'">
                     <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
@@ -9,9 +8,6 @@
                         <p>School :&nbsp; {{request.school_name}}</p>
                         <mat-icon>location_city</mat-icon>
                         <p>City :&nbsp; {{request.city}}</p>
-
-
-
 
                         <mat-icon>description</mat-icon>
                         <p>Description :&nbsp; {{request.description}}</p>
@@ -41,75 +37,55 @@
             </div>
         </mat-accordion>-->
 
-        <mat-form-field appearance="standard" class="filter">
-            <mat-label>Filter</mat-label>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-        </mat-form-field>
+<section>
+    <mat-form-field appearance="standard" class="filter">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+    </mat-form-field>
 
-        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="Description">
-                <th mat-header-cell *matHeaderCellDef style="width: 400px;">
-                    <mat-icon>description</mat-icon>
-                    <span class="aligned-with-icon">Description</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-            </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="Description">
+            <th mat-header-cell *matHeaderCellDef style="width: 400px;">
+                <mat-icon>description</mat-icon>
+                <span class="aligned-with-icon">Description</span> </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.requesttype == 'tutorial'">{{element.description}} </div>
+                <div *ngIf="element.requesttype == 'resource'">{{element.resourcedescription}} </div>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="School Name">
+            <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                <mat-icon>school</mat-icon>
+                <span class="aligned-with-icon">School</span>
+            </th>
+            <td mat-cell *matCellDef="let element"> {{element.school_name}} </td>
+        </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="Date & Time">
-                <th mat-header-cell *matHeaderCellDef style="width: 150px;">
-                    <mat-icon>date_range</mat-icon>
-                    <span class="aligned-with-icon">Date & Time</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
-            </ng-container>
+        <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                <mat-icon>location_city</mat-icon>
+                <span class="aligned-with-icon ">City</span></th>
+            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+        </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="Student Level">
-                <th mat-header-cell *matHeaderCellDef style="width: 200px;">
-                    <mat-icon>bar_chart</mat-icon>
-                    <span class="aligned-with-icon">Student Level</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.studentlevel}} </td>
-            </ng-container>
+        <ng-container matColumnDef="expand">
+            <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="Number of Expected Student">
-                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
-                    <mat-icon>format_list_numbered_rtl</mat-icon>
-                    <span class="aligned-with-icon">Number of Expected Student</span> </th>
-                <td mat-cell *matCellDef="let element"> {{element.numofexpectedstudents}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="School Name">
-                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
-                    <mat-icon>school</mat-icon>
-                    <span class="aligned-with-icon">School</span>
-                </th>
-                <td mat-cell *matCellDef="let element"> {{element.school_name}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="City">
-                <th mat-header-cell *matHeaderCellDef style="width: 250px;">
-                    <mat-icon>location_city</mat-icon>
-                    <span class="aligned-with-icon ">City</span></th>
-                <td mat-cell *matCellDef="let element"> {{element.city}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="expand">
-                <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
-
-                <td mat-cell *matCellDef="let element">
-                    <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button aria-label="expand row" (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
                   <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
                   <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
                 </button>
-                </td>
-            </ng-container>
+            </td>
+        </ng-container>
 
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-            <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
-                    <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+                <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <div *ngIf="element.requesttype == 'tutorial'">
                         <div>
                             <p style="margin-left: 0;">Date & Time: {{element.datetime}}</p>
                         </div>
@@ -119,105 +95,32 @@
                         <div>
                             <p style="margin-left: 0;">Number of student: {{element.numofexpectedstudents}}</p>
                         </div>
-                        <br>
-                        <hr>
-                        <mat-action-row style="float: left;">
-                            <br>
-                            <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openDialog('0ms', '0ms')">Submit Offer</button>
-                            <p><br></p>
-                        </mat-action-row>
                     </div>
-                </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
-            <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
-            </tr>
-            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-            <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr>
-        </table>
-
-
-    </mat-tab>
-    <mat-tab label="School">
-        <mat-accordion multi="true" *ngIf="requests.length>0">
-            <div *ngFor=" let request of requests ">
-                <mat-expansion-panel *ngIf="request.status==='NEW'">
-                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
-                        <mat-icon>school</mat-icon>
-                        <p>School :&nbsp; {{request.school_name}}</p>
-                        <mat-icon>description</mat-icon>
-                        <p>Description :&nbsp; {{request.description}}</p>
-                    </mat-expansion-panel-header>
-                    <mat-panel-description>
+                    <div *ngIf="element.requesttype == 'resource'">
+                        <div>
+                            <p style="margin-left: 0;">Resource type: {{element.resourcetype}}</p>
+                        </div>
+                        <div>
+                            <p style="margin-left: 0;">Number required: {{element.resourcenum}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <mat-action-row style="float: left;">
+                        <br>
+                        <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openDialog('0ms', '0ms')">Submit Offer</button>
                         <p><br></p>
-                        <p>Proposed Date & Time :&nbsp;&nbsp; {{request.datetime}}</p>
-                        <p>Student Level :&nbsp;&nbsp; {{request.studentlevel}}</p>
-                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.numofexpectedstudents}}</p>
-                    </mat-panel-description>
-
-                    <mat-action-row>
-                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
                     </mat-action-row>
-                </mat-expansion-panel>
-                <p></p>
-            </div>
-
-
-        </mat-accordion>
-    </mat-tab>
-    <mat-tab label="City">
-        <mat-accordion multi="true" *ngIf="requests.length>0">
-            <div *ngFor=" let request of requests ">
-                <mat-expansion-panel *ngIf="request.status==='NEW'">
-                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
-                        <mat-icon>location_city</mat-icon>
-                        <p>City :&nbsp; {{request.city}}</p>
-                        <mat-icon>description</mat-icon>
-                        <p>Description :&nbsp; {{request.description}}</p>
-                    </mat-expansion-panel-header>
-                    <mat-panel-description>
-                        <p><br></p>
-                        <p>Proposed Date & Time :&nbsp;&nbsp; {{request.datetime}}</p>
-                        <p>Student Level :&nbsp;&nbsp; {{request.studentlevel}}</p>
-                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.numofexpectedstudents}}</p>
-                    </mat-panel-description>
-
-                    <mat-action-row>
-                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
-                    </mat-action-row>
-                </mat-expansion-panel>
-                <p></p>
-            </div>
-
-        </mat-accordion>
-    </mat-tab>
-    <mat-tab label="Request Date">
-        <mat-accordion multi="true" *ngIf="requests.length>0">
-            <div *ngFor=" let request of requests ">
-                <mat-expansion-panel *ngIf="request.status==='NEW'">
-                    <mat-expansion-panel-header [collapsedHeight]="'70px'" [expandedHeight]="'70px'">
-                        <!--         <mat-icon>date_range</mat-icon>
-                        <p>Request Date :&nbsp;{{request.request_date}} </p>-->
-                        <mat-icon>description</mat-icon>
-                        <p>Description :&nbsp; {{request.description}}</p>
-                    </mat-expansion-panel-header>
-                    <mat-panel-description>
-                        <p><br></p>
-                        <p>Proposed Date & Time :&nbsp;&nbsp; {{request.datetime}}</p>
-
-                        <p>Student Level :&nbsp;&nbsp; {{request.studentlevel}}</p>
-                        <p>Number of Expected Student :&nbsp;&nbsp; {{request.numofexpectedstudents}}</p>
-                    </mat-panel-description>
-
-                    <mat-action-row>
-                        <button mat-button color="primary" mat-raised-button color="accent">Submit Offer</button>
-                    </mat-action-row>
-                </mat-expansion-panel>
-            </div>
-
-        </mat-accordion>
-    </mat-tab>
-</mat-tab-group>
+                </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+</section>

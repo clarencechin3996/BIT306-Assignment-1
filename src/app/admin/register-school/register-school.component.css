@@ -4,16 +4,18 @@ textarea {
 }
 
 section {
-    background-color: #DEF5FF;
+    background-color: white;
     height: 1150px;
     overflow: hidden
 }
 
 mat-card {
     padding: 0;
-    margin: 100px 550px 100px 550px;
+    margin: auto;
     border-radius: 25px;
-    overflow: hidden
+    overflow: hidden;
+    margin-top: 50px;
+    width: 50%;
 }
 
 .first {

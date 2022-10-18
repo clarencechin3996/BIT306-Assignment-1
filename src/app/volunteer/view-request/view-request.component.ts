@@ -23,22 +23,21 @@ export class ViewRequestComponent implements OnInit{
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
     {description:'dd',datetime:'12-12-2022',studentlevel:'high',numofexpectedstudents:'11', school_name: 'H', city:'dd'},
-
   ]
-  requests : Request[] =[ ];
-  //dataSource!: MatTableDataSource<Request>;
+  requests : Request[] =[];
+  dataSource!: MatTableDataSource<Request>;
 
   constructor(public dialog: MatDialog, public accService:AccService){
   } 
 
-  displayedColumns: string[] = ['Description', 'Date & Time', 'Student Level', 'Number of Expected Student','School Name', 'City'];
+  displayedColumns: string[] = ['Description','School Name', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: Request | null;
 
   ngOnInit(){
-    this.requests = this.accService.getRequest();
+    this.requests = this.accService.getRequest();    
+    this.dataSource = new MatTableDataSource(this.requests);
   }
-    dataSource = new MatTableDataSource(this.request);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -47,7 +46,8 @@ export class ViewRequestComponent implements OnInit{
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(RequestDialogComponent, {
-      width: '250px',
+      width: '700px',
+      height: '300px',
       enterAnimationDuration,
       exitAnimationDuration,
     });

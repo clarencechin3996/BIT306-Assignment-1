@@ -4,29 +4,21 @@ textarea {
 }
 
 section {
-    background-color: #DEF5FF;
-    height: 930px;
-    overflow: hidden
+    background-color: white;
+    height: 1000px;
+    overflow: hidden;
 }
 
 mat-card {
     padding: 0;
-    margin: 100px 600px 100px 600px;
-    border-radius: 25px;
-    overflow: hidden
+    margin: auto;
+    width: 30%;
+    height: 400px;
+    margin-top: 220px;
 }
 
 mat-form-field {
     padding: 10px 20px 0 20px;
-}
-
-button.loginBtn {
-    margin: 0 90px 20px 20px;
-    float: right;
-}
-
-button.regBtn {
-    margin: 0 10px 20px 95px;
 }
 
 .loginForm {
