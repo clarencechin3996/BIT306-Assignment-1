@@ -1,9 +1,10 @@
 <app-page-header></app-page-header>
 <mat-tab-group>
     <mat-tab label="Submit Tutorial">
-        <section>
+        <section style="padding-top: 30px;">
             <mat-card @fade>
                 <form (submit)="onAddTutorialRequest(accountForm)" #accountForm="ngForm">
+                    <h3 style="text-align: center;">Tutorial Request</h3>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Description of Request</mat-label>
                         <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="3" #description="ngModel">
@@ -24,32 +25,19 @@
                         <input matInput type="text" placeholder="Number of Expected Students" name="numofexpectedstudents" ngModel required minlength="3" #numofexpectedstudents="ngModel">
                         <mat-error *ngIf="numofexpectedstudents.invalid">Please enter the number of expected students</mat-error>
                     </mat-form-field>
-
-                    <mat-form-field appearance="outline" class="center-block">
-                        <mat-label>Request ID</mat-label>
-
-                        <input matInput type="text" placeholder="Request ID" name="requestID" ngModel required minlength="3" #requestID="ngModel">
-                        <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
-                    </mat-form-field>
-                    <div>
-                        <mat-form-field appearance="outline" class="center-block">
-                            <mat-label>Request type</mat-label>
-
-                            <input matInput type="text" value="tutorial" placeholder="Request type" name="requesttype" ngModel minlength="3" #requesttype="ngModel">
-
-                            <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
-                        </mat-form-field>
+                    <div style="text-align: center;">
+                        <button class="regBtn" mat-raised-button color="accent" type="submit">Submit</button>
                     </div>
-
-                    <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
                 </form>
             </mat-card>
         </section>
     </mat-tab>
     <mat-tab label="Submit Resource">
-        <section>
+        <section style="padding-top: 30px;">
             <mat-card @fade>
                 <form (submit)="onAddResourceRequest(accountForm1)" #accountForm1="ngForm">
+                    <h3 style="text-align: center;">Resource Request</h3>
+
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Description of Resource</mat-label>
                         <input matInput type="text" placeholder="Resource Description" name="resourcedescription" ngModel required minlength="3" #resourcedescription="ngModel">
@@ -71,16 +59,9 @@
                         <mat-error *ngIf="studentlevel.invalid">Please enter the number of resources required</mat-error>
                     </mat-form-field>
 
-                    <div>
-                        <mat-form-field appearance="outline" class="center-block">
-                            <mat-label>Request type</mat-label>
-
-                            <input matInput type="text" value="resource" placeholder="Request type" name="requesttype" ngModel minlength="3" #requesttype="ngModel">
-
-                            <mat-error *ngIf="requestID.invalid">Please enter the request ID</mat-error>
-                        </mat-form-field>
+                    <div style="text-align: center;">
+                        <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
                     </div>
-                    <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
                 </form>
             </mat-card>
         </section>

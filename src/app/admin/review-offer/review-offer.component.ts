@@ -44,16 +44,16 @@ export class ReviewOfferComponent implements OnInit{
 
   openAcceptOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(AcceptOfferDialogComponent, {
-      width: '700px',
-      height: '300px',
+      width: '450px',
+      height: '180px',
       enterAnimationDuration,
       exitAnimationDuration,
     });
   }
   openCloseOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialog.open(CloseOfferDialogComponent, {
-      width: '700px',
-      height: '300px',
+      width: '450px',
+      height: '180px',
       enterAnimationDuration,
       exitAnimationDuration,
     });

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderLoginComponent } from './header/loginHeader/login.header';
+import { HeaderPage2Component } from './header/pageHeader2/page2.header';
 import { LoginComponent } from './account/login/login.component';
 import { HeaderRegisterComponent } from './header/registerHeader/register.header';
 import { RegisterComponent } from './account/register/register.component';
@@ -20,6 +21,9 @@ import { JustHeaderComponent } from './header/header/header.component';
 import { JustFooterComponent } from './footer/footer.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ReviewOfferComponent } from './admin/review-offer/review-offer.component';
+import { AcceptOfferDialogComponent } from './admin/review-offer/review-offer.component';
+import { CloseOfferDialogComponent } from './admin/review-offer/review-offer.component';
+import {MatStepperModule} from '@angular/material/stepper'; 
 
 
 import { MatCardModule} from '@angular/material/card';
@@ -56,12 +60,15 @@ const appRoutes:Routes = [
     HeaderRegisterComponent,
     RegisterComponent,
     HeaderPageComponent,
+    HeaderPage2Component,
     ViewRequestComponent,
     RegisterSchoolComponent,
     HomePageComponent,
     HeaderRegisterSchoolComponent,
     SubmitRequestComponent,
     RequestDialogComponent,
+    AcceptOfferDialogComponent,
+    CloseOfferDialogComponent,
     JustHeaderComponent,
     JustFooterComponent,
     ReviewOfferComponent
@@ -80,6 +87,7 @@ const appRoutes:Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
+    MatStepperModule,
     MatTabsModule,
     MatTableModule,
     MatMenuModule,
