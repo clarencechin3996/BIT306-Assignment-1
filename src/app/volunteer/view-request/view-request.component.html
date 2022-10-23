@@ -51,8 +51,8 @@
                 <mat-icon>description</mat-icon>
                 <span class="aligned-with-icon">Description</span> </th>
             <td mat-cell *matCellDef="let element">
-                <div *ngIf="element.requesttype == 'tutorial'">{{element.description}} </div>
-                <div *ngIf="element.requesttype == 'resource'">{{element.resourcedescription}} </div>
+                <div *ngIf='element.requesttype === "tutorial"'>{{element.description}} </div>
+                <div *ngIf='element.requesttype === "resource"'>{{element.resourcedescription}} </div>
             </td>
         </ng-container>
         <ng-container matColumnDef="School Name">
@@ -85,7 +85,7 @@
         <ng-container matColumnDef="expandedDetail">
             <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
                 <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                    <div *ngIf="element.requesttype == 'tutorial'">
+                    <div *ngIf='element.requesttype === "tutorial"'>
                         <div>
                             <p style="margin-left: 0;">Date & Time: {{element.datetime}}</p>
                         </div>
@@ -96,7 +96,7 @@
                             <p style="margin-left: 0;">Number of student: {{element.numofexpectedstudents}}</p>
                         </div>
                     </div>
-                    <div *ngIf="element.requesttype == 'resource'">
+                    <div *ngIf='element.requesttype === "resource"'>
                         <div>
                             <p style="margin-left: 0;">Resource type: {{element.resourcetype}}</p>
                         </div>
