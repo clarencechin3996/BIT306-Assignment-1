@@ -1,9 +1,12 @@
+import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core'; //Get the post model
 import { Account } from './account.model';
 import { SchoolAdmin } from './school-admin.modal';
 import { SchoolHelpAdmin } from './school-help-admin.modal';
 import { School } from './school.modal';
 import { Request } from './request.modal';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({providedIn: 'root'})
 
@@ -16,6 +19,10 @@ export class AccService{ //Create a account class
   private school:School[]=[]; //Set type to School array(model) and assign to empty array
   private request:Request[]=[]; //Set type to Requesy array(model) and assign to empty array
 
+
+  private requestsUpdated = new Subject<Request[]>();
+
+  constructor(private http: HttpClient){}
 
 
 
@@ -58,11 +65,25 @@ export class AccService{ //Create a account class
   }
 
   getRequest(){
-    return this.request;
+    this.http.get<{message: String, requests: Request[]}>('http://localhost:3000/api/posts')
+    .subscribe((requestData)=>{
+      this.request = requestData.requests;
+      this.requestsUpdated.next([...this.request]);
+    })
+    //return this.request;
   }
 
-  AddRequest(description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string, status: string, school_name: string, city: string, resourcedescription: string, resourcetype: string, resourcenum: string, requestID: string, requesttype: string,requestdate: Date, remarks: string, volunteerUsername: string){ // method to add account with arguments
-    const request: Request = {description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents, status: status, school_name: school_name, city: city, resourcedescription:resourcedescription, resourcetype:resourcetype, resourcenum:resourcenum, requestID: requestID, requesttype:requesttype,requestdate:requestdate, remarks:remarks, volunteerUsername: volunteerUsername}; // variable storing values of account
+  getRequestUpdateListener(){
+    return this.requestsUpdated.asObservable();
+  }
+
+  AddRequest( description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string, status: string, school_name: string, city: string, resourcedescription: string, resourcetype: string, resourcenum: string, requesttype: string,requestdate: Date, remarks: string, volunteerUsername: string){ // method to add account with arguments
+    const request: Request = {requestId: null as any, description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents, status: status, school_name: school_name, city: city, resourcedescription:resourcedescription, resourcetype:resourcetype, resourcenum:resourcenum,  requesttype:requesttype,requestdate:requestdate, remarks:remarks, volunteerUsername: volunteerUsername}; // variable storing values of account
+    this.http
+    .post<{message:string}>('http://localhost:3000/api/posts', request)
+    .subscribe((responseData)=>{
     this.request.push(request); // push the nre post into account array
+    this.requestsUpdated.next([...this.request]);
+    });
   }
 }

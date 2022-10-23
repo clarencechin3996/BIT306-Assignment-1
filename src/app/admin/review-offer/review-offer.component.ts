@@ -5,6 +5,7 @@ import { AccService } from "src/app/account/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component ({
   selector: 'review-offer',
@@ -23,19 +24,24 @@ export class ReviewOfferComponent implements OnInit{
 
   requests : Request[] =[];
   users : Account[]=[];
+  private requestsSub: Subscription | undefined;
 
   dataSource!: MatTableDataSource<Request>;
   constructor(public dialog: MatDialog, public accService:AccService){
-  } 
+  }
 
   displayedColumns: string[] = ['Description','School Name', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
   expandedElement!: Request | null;
 
   ngOnInit(){
-    this.requests = this.accService.getRequest();    
     this.users = this.accService.getAcc();
-    this.dataSource = new MatTableDataSource(this.requests);
+    this.accService.getRequest();
+    this.requestsSub = this.accService.getRequestUpdateListener().subscribe((requests: Request[])=>{
+      this.requests = requests;
+      this.dataSource = new MatTableDataSource(requests);
+
+    });
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

@@ -29,16 +29,16 @@ export class SubmitRequestComponent{
       if(form.invalid){
         return;
       }
-  
-      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='SJK Henu', form.value.city='Kajang',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requestID, form.value.requesttype='tutorial',form.value.requestdate,form.value.remarks, form.value.volunteerUsername='ben');
+
+      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='SJK Henu', form.value.city='Kajang',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='tutorial',form.value.requestdate,form.value.remarks, form.value.volunteerUsername='ben');
       form.resetForm();
       }
       onAddResourceRequest(form:NgForm){
         if(form.invalid){
           return;
         }
-    
-        this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='SJK Henu', form.value.city='Kajang',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requestID, form.value.requesttype='resource',form.value.requestdate,form.value.remarks, form.value.volunteerUsername='ben');
+
+        this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name='SJK Henu', form.value.city='Kajang',form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='resource',form.value.requestdate,form.value.remarks, form.value.volunteerUsername='ben');
         form.resetForm();
         }
 }
