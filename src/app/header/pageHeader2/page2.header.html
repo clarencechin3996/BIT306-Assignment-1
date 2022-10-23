@@ -1,24 +1,27 @@
 <mat-toolbar color="primary">
 
-    <span class="title">&nbsp;&nbsp;<a routerLink="/volunteer-home-page" mat-button color="white" style="font-size: 25px;">School HELP</a></span>
-    <div style="margin-left: 1200px;">
-        <button style="margin-left: 0px;" type="button" mat-icon-button class="view favorite-icon"><a routerLink="/view-request" mat-button color="white">View Request</a>&nbsp;
+
+    <div class="header">
+
+        <div class="header-left">
+            <span class="logo">School HELP</span>
+        </div>
+
+
+        <div class="header-right">
+
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon style="transform: scale(1.5); margin-bottom: 0px;">account_circle</mat-icon>
     </button>
-        <button type="button" mat-icon-button class="view favorite-icon"><a routerLink="/review-offer" mat-button color="white">Review Offer</a>
-    </button></div>
-
-
-    <div style="margin-left: 110px;">
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon style="transform: scale(1.5);">account_circle</mat-icon>
-      </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item><a routerLink="/login">
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item><a routerLink="/login">
           <mat-icon>exit_to_app</mat-icon>
-          <span>Log Out</span></a>
-        </button>
+          <span>Log Out</span>
+        </a>
+      </button>
 
-        </mat-menu>
+            </mat-menu>
+        </div>
     </div>
 
 

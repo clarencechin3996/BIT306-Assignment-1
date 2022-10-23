@@ -6,6 +6,7 @@ import { SchoolHelpAdmin } from './school-help-admin.modal';
 import { School } from './school.modal';
 import { Request } from './request.modal';
 import { HttpClient } from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 
 @Injectable({providedIn: 'root'})
@@ -65,9 +66,30 @@ export class AccService{ //Create a account class
   }
 
   getRequest(){
-    this.http.get<{message: String, requests: Request[]}>('http://localhost:3000/api/posts')
-    .subscribe((requestData)=>{
-      this.request = requestData.requests;
+    this.http.get<{message: string, requests: any}>('http://localhost:3000/api/posts')
+    .pipe(map((requestData)=> {
+      return requestData.requests.map(request =>{
+        return{
+          description: request.description,
+          datetime: request.datetime,
+          studentlevel: request.studentlevel,
+          numofexpectedstudents: request.numofexpectedstudents,
+          status: request.status,
+          school_name: request.school_name,
+          city: request.city,
+          resourcedescription: request.resourcedescription,
+          resourcetype: request.resourcetype,
+          resourcenum: request.resourcenum,
+          requesttype: request.requesttype,
+          requestdate: request.requestdate,
+          remarks: request.remarks,
+          volunteerUsername: request.volunteerUsername,
+          requestId: request._id
+        };
+      });
+    }))
+    .subscribe((transformedRequests)=>{
+      this.request = transformedRequests;
       this.requestsUpdated.next([...this.request]);
     })
     //return this.request;

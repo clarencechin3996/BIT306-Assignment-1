@@ -52,18 +52,13 @@ app.post("/api/posts", (req, res, next) => {
 app.get('/api/posts', (req, res, next) => {
     Request.find().then(documents => {
         res.status(200).json({
-            message: 'Post fetched successfully',
-            posts: documents
-        });
+            message: "Request fetched successfully",
+            requests: documents
+        })
     })
 });
 
-app.delete('/api/posts/:id', (req, res, next) => {
-    Request.deleteOne({ _id: req.params.id }).then(result => {
-        console.log(result);
-        res.status(200).json({ message: "Request deleted!" });
-    })
-});
+
 
 
 
