@@ -23,7 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReviewOfferComponent } from './admin/review-offer/review-offer.component';
 import { AcceptOfferDialogComponent } from './admin/review-offer/review-offer.component';
 import { CloseOfferDialogComponent } from './admin/review-offer/review-offer.component';
-import {MatStepperModule} from '@angular/material/stepper'; 
+import {MatStepperModule} from '@angular/material/stepper';
 
 
 import { MatCardModule} from '@angular/material/card';
@@ -37,9 +37,11 @@ import { MatNativeDateModule} from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
-import {MatMenuModule} from '@angular/material/menu'; 
-import {MatDialogModule} from '@angular/material/dialog'; 
-import {MatTableModule} from '@angular/material/table'; 
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTableModule} from '@angular/material/table';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const appRoutes:Routes = [
   {path:'register', component: RegisterComponent},
@@ -93,6 +95,7 @@ const appRoutes:Routes = [
     MatMenuModule,
     MatSelectModule,
     MatDialogModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes
     )

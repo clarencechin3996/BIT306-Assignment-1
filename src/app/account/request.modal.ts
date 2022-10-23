@@ -1,4 +1,5 @@
 export interface Request{
+  requestId: string;
   description: string;
   datetime: Date;
   studentlevel: string;
@@ -9,7 +10,6 @@ export interface Request{
   resourcedescription: string;
   resourcetype: string;
   resourcenum: string;
-  requestID: string;
   requesttype: string;
   requestdate: Date;
   remarks: string;
