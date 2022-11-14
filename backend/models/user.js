@@ -35,6 +35,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    schoolname: {
+        type: String,
+        required: false
+    },
     role: {
         type: String,
         required: true

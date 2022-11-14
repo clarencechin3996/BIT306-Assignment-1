@@ -37,7 +37,7 @@ get isLoggedIn() {
 
   login(email: string, password: string){
     const authData: AuthData = {
-      email: email, password: password, fullName:"", phone:"", occupation:"", dob:"", staffID:"", position:"", role:""
+      email: email, password: password, fullName:"", phone:"", occupation:"", dob:"", staffID:"", position:"",schoolname:"", role:""
     };
     this.http.post<{token:string, loginUserRole:string, loginUser: User}>('http://localhost:3000/api/user/login',authData)
     .subscribe(response=>{
@@ -50,7 +50,7 @@ get isLoggedIn() {
         this.router.navigate(['/volunteer-home-page']);
         console.log(true);
         console.log(this.getUser());
-      }else if(response.loginUserRole=="schoolAdmin"){
+      }else if(response.loginUserRole=="School-Admin"){
         this.users = response.loginUser;
         this.router.navigate(['/submit-request']);
         console.log(true);
@@ -72,8 +72,8 @@ get isLoggedIn() {
     this.router.navigate(['/login']);
   }
 
-  createUser(email:string,password:string, fullName:string, phone:string, occupation:string, dob:string, staffID:string, position:string, role:string){
-    const authData: AuthData = {email:email, password:password, fullName:fullName, phone:phone,occupation:occupation, dob:dob, staffID:staffID, position:position, role:role};
+  createUser(email:string,password:string, fullName:string, phone:string, occupation:string, dob:string, staffID:string, position:string,schoolname:string, role:string){
+    const authData: AuthData = {email:email, password:password, fullName:fullName, phone:phone,occupation:occupation, dob:dob, staffID:staffID, position:position,schoolname:schoolname, role:role};
     this.http.post('http://localhost:3000/api/user/signup',authData)
     .subscribe(response=>{
       console.log(response);

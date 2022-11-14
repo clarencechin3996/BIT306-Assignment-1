@@ -7,5 +7,6 @@ export interface AuthData{
   dob: string;
   staffID: string;
   position: string;
+  schoolname:string;
   role: string;
 }

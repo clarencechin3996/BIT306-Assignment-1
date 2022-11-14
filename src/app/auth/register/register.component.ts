@@ -25,7 +25,7 @@ export class RegisterComponent{
     if(form.invalid){
       return;
     }
-    this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position, "Volunteer");
+    this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position,form.value.schoolname, "Volunteer");
     form.resetForm();
 
 }

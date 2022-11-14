@@ -7,5 +7,6 @@ export interface User{
   dob: string;
   staffID: string;
   position: string;
+  schoolname:string;
   role: string;
 }

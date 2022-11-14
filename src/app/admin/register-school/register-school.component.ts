@@ -34,7 +34,7 @@ export class RegisterSchoolComponent{
         return;
       }
 
-      this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position, "SchoolAdmin");
+      this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position,form.value.schoolname, "SchoolAdmin");
       form.resetForm();
 
 
