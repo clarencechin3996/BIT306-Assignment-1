@@ -1,28 +1,29 @@
 <mat-toolbar color="primary">
+    <span>
+  <span class="logo">School HELP</span>
+    </span>
 
+    <span class="spacer">
+</span>
+    <ul>
 
-    <div class="header">
-
-        <div class="header-left">
-            <span class="logo">School HELP</span>
-        </div>
-
-
-        <div class="header-right">
-
+        <li style="margin-right: 15px;">
+            <a *ngIf="user">Welcome, {{ user.fullName }}</a>
+        </li>
+        <li>
             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon style="transform: scale(1.5); margin-bottom: 0px;">account_circle</mat-icon>
+      <mat-icon style="transform: scale(1.5); ">account_circle</mat-icon>
     </button>
             <mat-menu #menu="matMenu">
                 <button mat-menu-item><a routerLink="/login">
           <mat-icon>exit_to_app</mat-icon>
-          <span>Log Out</span>
+          <span (click)="onLogout()" style="color: black;">Log Out</span>
         </a>
-      </button>
-
+          </button>
             </mat-menu>
-        </div>
-    </div>
+        </li>
 
+
+    </ul>
 
 </mat-toolbar>

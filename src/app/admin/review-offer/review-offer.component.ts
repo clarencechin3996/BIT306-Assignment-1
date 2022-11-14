@@ -1,7 +1,7 @@
+import { User } from './../../auth/user.model';
 import { Component, OnInit } from "@angular/core";
-import { Request } from "src/app/account/request.modal";
-import { Account } from "src/app/account/account.model";
-import { AccService } from "src/app/account/account.service";
+import { Request } from "src/app/request.modal";
+import { AccService } from "src/app/auth/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -23,8 +23,9 @@ import { Subscription } from 'rxjs';
 export class ReviewOfferComponent implements OnInit{
 
   requests : Request[] =[];
-  users : Account[]=[];
+  users : User[]=[];
   private requestsSub: Subscription | undefined;
+  private usersSub: Subscription | undefined;
 
   dataSource!: MatTableDataSource<Request>;
   constructor(public dialog: MatDialog, public accService:AccService){
@@ -35,7 +36,11 @@ export class ReviewOfferComponent implements OnInit{
   expandedElement!: Request | null;
 
   ngOnInit(){
-    this.users = this.accService.getAcc();
+    this.accService.getUser();
+    this.usersSub = this.accService.getUserUpdateListener().subscribe((users: User[])=>{
+      this.users = users;
+    })
+
     this.accService.getRequest();
     this.requestsSub = this.accService.getRequestUpdateListener().subscribe((requests: Request[])=>{
       this.requests = requests;

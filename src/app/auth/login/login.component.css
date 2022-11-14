@@ -1,0 +1,32 @@
+mat-form-field,
+textarea {
+    width: 70%;
+}
+
+section {
+    background-color: white;
+    height: 1000px;
+    overflow: hidden;
+}
+
+mat-card {
+    padding: 0;
+    margin: auto;
+    width: 30%;
+    height: 400px;
+    margin-top: 220px;
+}
+
+mat-form-field {
+    padding: 10px 20px 0 20px;
+}
+
+.loginForm {
+    padding: 0 150px 0 150px;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

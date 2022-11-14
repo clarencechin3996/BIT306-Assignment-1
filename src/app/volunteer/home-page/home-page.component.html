@@ -1,4 +1,5 @@
-<app-page-header></app-page-header>
+<page2-header></page2-header>
 <section>
-    <p>Welcome</p>
+    <p *ngIf="user">Welcome, {{ user.email }}</p>
+
 </section>

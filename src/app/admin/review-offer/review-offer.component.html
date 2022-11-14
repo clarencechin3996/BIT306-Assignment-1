@@ -55,7 +55,7 @@
                     </div>
                     <div *ngIf="users.length>0">
                         <div *ngFor="let user of users">
-                            <div *ngIf="user.username==element.volunteerUsername">
+                            <div *ngIf="user.fullName==element.volunteerUsername">
                                 <div>
                                     <p style="margin-left: 0;">Volunteer Name: {{user.fullName}}</p>
                                 </div>
@@ -72,8 +72,10 @@
                     <hr>
                     <mat-action-row style="float: left;">
                         <br>
-                        <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openAcceptOfferDialog('0ms', '0ms')">Accept Offer</button>&nbsp;
-                        <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openCloseOfferDialog('0ms', '0ms')">Close Offer</button>
+
+                        <button *ngIf="element.status == 'PENDING'" mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openAcceptOfferDialog('0ms', '0ms')">Accept Offer</button>&nbsp;
+
+                        <button *ngIf="element.status == 'ACCEPTED'" mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openCloseOfferDialog('0ms', '0ms')">Close Offer</button>
 
                         <p><br></p>
                     </mat-action-row>
