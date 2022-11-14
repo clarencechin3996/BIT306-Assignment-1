@@ -87,7 +87,10 @@
                 <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                     <div *ngIf='element.requesttype === "tutorial"'>
                         <div>
-                            <p style="margin-left: 0;">Date & Time: {{element.datetime}}</p>
+                            <p style="margin-left: 0;">Date: {{element.datetime.slice(0,10)}}</p>
+                        </div>
+                        <div>
+                            <p style="margin-left: 0;">Time: {{element.datetime.slice(11,19)}}</p>
                         </div>
                         <div>
                             <p style="margin-left: 0;">Student Level: {{element.studentlevel}}</p>

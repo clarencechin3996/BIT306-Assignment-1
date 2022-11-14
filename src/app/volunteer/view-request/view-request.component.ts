@@ -53,6 +53,7 @@ export class ViewRequestComponent implements OnInit{
       exitAnimationDuration,
     });
   }
+  
 }
 @Component({
   selector: 'request-dialog',
