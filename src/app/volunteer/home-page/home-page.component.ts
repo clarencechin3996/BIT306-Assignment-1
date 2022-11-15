@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { AuthService } from './../../auth/auth.service';
+import { User } from './../../auth/user.model';
+import { Component, OnInit} from "@angular/core";
 
 @Component ({
   selector: 'volunteer-home-page',
@@ -7,6 +9,11 @@ import { Component } from "@angular/core";
 
 })
 
-export class HomePageComponent{
+export class HomePageComponent implements OnInit{
+  user: User;
+  constructor(private authService:AuthService) {}
 
+  ngOnInit() {
+    this.user = this.authService.getUser();
+  }
 }

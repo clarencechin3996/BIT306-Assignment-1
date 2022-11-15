@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { User } from './../../auth/user.model';
+import { AuthService } from './../../auth/auth.service';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'page2-header',
@@ -6,5 +8,16 @@ import { Component } from '@angular/core';
   styleUrls:['./page2.header.css']
 
 })
-export class HeaderPage2Component {
+export class HeaderPage2Component implements OnInit{
+
+  user: User;
+  constructor(private authService:AuthService){}
+
+
+  ngOnInit() {
+    this.user=this.authService.getUser();
+  }
+  onLogout(){
+    this.authService.logout();
+  }
 }

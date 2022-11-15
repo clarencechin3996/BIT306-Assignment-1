@@ -7,9 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { HeaderLoginComponent } from './header/loginHeader/login.header';
 import { HeaderPage2Component } from './header/pageHeader2/page2.header';
-import { LoginComponent } from './account/login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { HeaderRegisterComponent } from './header/registerHeader/register.header';
-import { RegisterComponent } from './account/register/register.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { ViewRequestComponent } from './volunteer/view-request/view-request.component';
 import { HeaderPageComponent } from './header/pageHeader/page.header';
 import { HomePageComponent } from './volunteer/home-page/home-page.component';
@@ -19,13 +19,12 @@ import { SubmitRequestComponent } from './admin/submit-request/submit-request.co
 import { RequestDialogComponent } from './volunteer/view-request/view-request.component';
 import { JustHeaderComponent } from './header/header/header.component';
 import { JustFooterComponent } from './footer/footer.component';
-import { MatSelectModule } from '@angular/material/select';
 import { ReviewOfferComponent } from './admin/review-offer/review-offer.component';
 import { AcceptOfferDialogComponent } from './admin/review-offer/review-offer.component';
 import { CloseOfferDialogComponent } from './admin/review-offer/review-offer.component';
+
+import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
-
-
 import { MatCardModule} from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
 import { MatExpansionModule} from '@angular/material/expansion';
@@ -40,19 +39,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatTableModule} from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 
-const appRoutes:Routes = [
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'view-request', component: ViewRequestComponent},
-  {path: 'register-school', component: RegisterSchoolComponent},
-  {path: 'submit-request', component: SubmitRequestComponent},
-  {path: 'volunteer-home-page', component: HomePageComponent},
-  {path: 'review-offer', component: ReviewOfferComponent},
-
-]
 
 @NgModule({
   declarations: [
@@ -95,12 +86,11 @@ const appRoutes:Routes = [
     MatMenuModule,
     MatSelectModule,
     MatDialogModule,
+    AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(
-      appRoutes
-    )
+
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Request } from "src/app/account/request.modal";
-import { AccService } from "src/app/account/account.service";
+import { Request } from "src/app/request.modal";
+import { AccService } from "src/app/auth/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -25,8 +25,7 @@ export class ViewRequestComponent implements OnInit{
   private requestsSub: Subscription | undefined;
   dataSource!: MatTableDataSource<Request>;
 
-  constructor(public dialog: MatDialog, public accService:AccService){
-  }
+  constructor(public dialog: MatDialog, public accService:AccService){}
 
   displayedColumns: string[] = ['Description','School Name', 'City'];
   columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
@@ -54,6 +53,7 @@ export class ViewRequestComponent implements OnInit{
       exitAnimationDuration,
     });
   }
+  
 }
 @Component({
   selector: 'request-dialog',

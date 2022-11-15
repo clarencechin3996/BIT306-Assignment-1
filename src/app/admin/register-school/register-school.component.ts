@@ -1,6 +1,7 @@
+import { AuthService } from './../../auth/auth.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {Component} from '@angular/core';
-import { AccService } from 'src/app/account/account.service';
+import { AccService } from 'src/app/auth/account.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -19,7 +20,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterSchoolComponent{
 
   hide = true;
-  constructor(public accService: AccService){}
+  constructor(public accService: AccService, public authService: AuthService){}
 
   onAddSchool(form:NgForm){
     if(form.invalid){
@@ -33,9 +34,9 @@ export class RegisterSchoolComponent{
         return;
       }
 
-      this.accService.addSchoolAdmin(form.value.username, form.value.password, form.value.fullName, form.value.email, form.value.phone, form.value.staffID, form.value.position);
+      this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position,form.value.schoolname, "SchoolAdmin");
       form.resetForm();
-  
+
 
 }
 }
