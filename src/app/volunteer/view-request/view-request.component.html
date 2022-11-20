@@ -60,14 +60,26 @@
                 <mat-icon>school</mat-icon>
                 <span class="aligned-with-icon">School</span>
             </th>
-            <td mat-cell *matCellDef="let element"> {{element.school_name}} </td>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="school.length > 0">
+                    <div *ngFor="let schools of school">
+                        <div *ngIf="element.school_name==schools.schoolname">{{schools.schoolname}}</div>
+                    </div>
+                </div>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="City">
             <th mat-header-cell *matHeaderCellDef style="width: 250px;">
                 <mat-icon>location_city</mat-icon>
                 <span class="aligned-with-icon ">City</span></th>
-            <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="school.length > 0">
+                    <div *ngFor="let schools of school">
+                        <div *ngIf="element.school_name==schools.schoolname">{{schools.city}}</div>
+                    </div>
+                </div>
+            </td>
         </ng-container>
 
         <ng-container matColumnDef="expand">
@@ -95,6 +107,7 @@
                         <div>
                             <p style="margin-left: 0;">Student Level: {{element.studentlevel}}</p>
                         </div>
+
                         <div>
                             <p style="margin-left: 0;">Number of student: {{element.numofexpectedstudents}}</p>
                         </div>

@@ -22,6 +22,8 @@ import { JustFooterComponent } from './footer/footer.component';
 import { ReviewOfferComponent } from './admin/review-offer/review-offer.component';
 import { AcceptOfferDialogComponent } from './admin/review-offer/review-offer.component';
 import { CloseOfferDialogComponent } from './admin/review-offer/review-offer.component';
+import { SchoolAdminHomepageComponent } from './admin/school-admin/school-admin-homepage.component';
+import { SchoolHelpAdminHomepageComponent } from './admin/school-help-admin/school-help-admin-homepage.component';
 
 import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -42,8 +44,7 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptor } from './auth/auth-interceptor';
-
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     ViewRequestComponent,
     RegisterSchoolComponent,
     HomePageComponent,
+    SchoolAdminHomepageComponent,
+    SchoolHelpAdminHomepageComponent,
     HeaderRegisterSchoolComponent,
     SubmitRequestComponent,
     RequestDialogComponent,
@@ -68,6 +71,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
   ],
   imports: [
     BrowserModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FormsModule,

@@ -22,11 +22,14 @@ import { Subscription } from 'rxjs';
 
 export class ReviewOfferComponent implements OnInit{
 
+
   requests : Request[] =[];
   users : User[]=[];
   private requestsSub: Subscription | undefined;
   private usersSub: Subscription | undefined;
-
+  newSum = 0;
+  pendSum = 0;
+  acceptSum = 0;
   dataSource!: MatTableDataSource<Request>;
   constructor(public dialog: MatDialog, public accService:AccService){
   }
@@ -45,7 +48,21 @@ export class ReviewOfferComponent implements OnInit{
     this.requestsSub = this.accService.getRequestUpdateListener().subscribe((requests: Request[])=>{
       this.requests = requests;
       this.dataSource = new MatTableDataSource(requests);
-
+      for(let i = 0; i < this.requests.length; i++){
+          if(this.requests[i].status=='NEW'){
+          this.newSum += 1;
+          };
+        };
+      for(let i = 0; i < this.requests.length; i++){
+          if(this.requests[i].status=='PENDING'){
+          this.pendSum += 1;
+          };
+        };
+        for(let i = 0; i < this.requests.length; i++){
+          if(this.requests[i].status=='ACCEPTED'){
+          this.acceptSum += 1;
+          };
+        };
     });
   }
   applyFilter(event: Event) {

@@ -1,8 +1,8 @@
 <page2-header></page2-header>
 <section>
-    <mat-stepper orientation="horizontal" linear>
+    <mat-stepper orientation="horizontal" linear style="margin-left: 420px; margin-right:420px">
         <mat-step label="Add School">
-            <mat-card @fade>
+            <mat-card @fade style="width: 830px;">
                 <form (submit)="onAddSchool(accountForm)" #accountForm="ngForm">
                     <h2 style="text-align:center ;">Register School</h2>
                     <mat-form-field appearance="outline" class="center-block">
@@ -28,7 +28,7 @@
             </mat-card>
         </mat-step>
         <mat-step label="Add School Admin">
-            <mat-card @fade>
+            <mat-card @fade style="width: 830px;">
                 <form (submit)="onAddSchoolAdmin(accountForm)" #accountForm="ngForm">
                     <h2 style="text-align:center ;">Register School Admin</h2>
 

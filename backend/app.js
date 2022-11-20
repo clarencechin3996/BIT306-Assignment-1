@@ -145,6 +145,15 @@ app.get('/api/requests', (req, res, next) => {
     })
 });
 
+app.get('/api/schools', (req, res, next) => {
+    School.find().then(documents => {
+        res.status(200).json({
+            message: "School fetched successfully",
+            schools: documents
+        })
+    })
+});
+
 app.get('/api/user', (req, res, next) => {
     User.find().then(documents => {
         res.status(200).json({

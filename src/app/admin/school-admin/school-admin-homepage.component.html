@@ -1,0 +1,53 @@
+<app-page-header></app-page-header>
+<section>
+    <div class="bg-light p-5 rounded" *ngIf="user">
+        <h3><span class="fs-4">
+        <p style="margin-bottom: 0;" *ngIf="user">Welcome, {{ user.fullName }}</p>
+      </span></h3>
+        <br>
+        <br>
+
+        <div class="container">
+            <div class="row row-cols-3">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+
+                            <h5 class="card-title" style="text-align: center;">
+                                <mat-icon>school</mat-icon>&nbsp; School
+                            </h5><br>
+                            <p class="card-text" style="text-align: center;">{{ user.schoolname }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">
+                                <mat-icon>Position</mat-icon>
+                                Position
+                            </h5><br>
+                            <p class="card-text" style="text-align: center;">{{ user.position }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">
+                                <mat-icon> location_on</mat-icon>
+                                School Address
+                            </h5><br>
+                            <div *ngIf="school.length > 0">
+                                <div *ngFor="let schools of school">
+                                    <p class="card-text" style="text-align: center;" *ngIf="schools.schoolname==user.schoolname">{{ schools.schooladdress }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

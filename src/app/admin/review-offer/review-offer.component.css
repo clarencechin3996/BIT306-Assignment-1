@@ -26,8 +26,9 @@ mat-expansion-panel-header p {
 
 section {
     background-color: whitesmoke;
-    height: 930px;
-    overflow: hidden
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 200px;
 }
 
 hr {
