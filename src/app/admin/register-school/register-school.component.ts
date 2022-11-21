@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './../../auth/user.model';
 import { AuthService } from './../../auth/auth.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -21,26 +22,25 @@ import { NgForm } from '@angular/forms';
 export class RegisterSchoolComponent implements OnInit{
   user: User
   hide = true;
-  constructor(public accService: AccService, public authService: AuthService){}
+  constructor(public accService: AccService, public authService: AuthService, private snackBar: MatSnackBar){}
   ngOnInit() {
     this.user=this.authService.getUser();
   }
-  onAddSchool(form:NgForm){
+
+
+  onAddAcc(form:NgForm){
     if(form.invalid){
       return;
     }
     this.accService.addSchool(form.value.schoolname, form.value.schooladdress, form.value.city);
+    this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position, form.value.schoolname, "School-Admin");
+    this.snackBar.open("Created Successful", "OK", {
+      duration: 4000,
+      panelClass: ['mat-toolbar', 'mat-primary']
+
+
+     });
     form.resetForm();
-  }
-
-    onAddSchoolAdmin(form:NgForm){
-      if(form.invalid){
-        return;
-      }
-
-      this.authService.createUser(form.value.email, form.value.password, form.value.fullName, form.value.phone, form.value.occupation, form.value.dob, form.value.staffID, form.value.position,form.value.schoolname, "SchoolAdmin");
-      form.resetForm();
-
 
 }
 }

@@ -81,6 +81,7 @@ export class AccService{ //Create a account class
     .subscribe((responsedata)=>{
       this.school.push(school);
       this.schoolsUpdated.next([...this.school]);
+      console.log(responsedata);
     })
   }
 

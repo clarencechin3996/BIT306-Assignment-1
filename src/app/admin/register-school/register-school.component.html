@@ -1,10 +1,11 @@
 <page2-header></page2-header>
 <section>
     <mat-stepper orientation="horizontal" linear style="margin-left: 420px; margin-right:420px">
-        <mat-step label="Add School">
+
+        <mat-step label="Add School Admin">
             <mat-card @fade style="width: 830px;">
-                <form (submit)="onAddSchool(accountForm)" #accountForm="ngForm">
-                    <h2 style="text-align:center ;">Register School</h2>
+                <form (submit)="onAddAcc(accountForm)" #accountForm="ngForm">
+                    <h2 style="text-align:center ;">Register School Admin</h2>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Schoolname</mat-label>
                         <input matInput type="text" placeholder="Schoolname" name="schoolname" ngModel required minlength="3" #schoolname="ngModel">
@@ -20,59 +21,46 @@
                         <input matInput type="text" placeholder="City" name="city" ngModel required minlength="3" #city="ngModel">
                         <mat-error *ngIf="city.invalid">Please enter the City name</mat-error>
                     </mat-form-field>
-                </form>
-                <div style="text-align:center;">
-                    <button mat-button matStepperNext mat-raised-button color="accent">Next</button>
-                </div>
-                &nbsp;
-            </mat-card>
-        </mat-step>
-        <mat-step label="Add School Admin">
-            <mat-card @fade style="width: 830px;">
-                <form (submit)="onAddSchoolAdmin(accountForm)" #accountForm="ngForm">
-                    <h2 style="text-align:center ;">Register School Admin</h2>
-
-                    <mat-form-field appearance="outline" class="center-block">
-                        <mat-label>Username</mat-label>
-                        <input matInput type="text" placeholder="Username" name="username" ngModel required minlength="3" #username="ngModel">
-                        <mat-error *ngIf="username.invalid">Please enter the staff's username</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="center-block">
-                        <mat-label>Password</mat-label>
-                        <input matInput type="text" placeholder="Password" name="password" ngModel required minlength="3" #password="ngModel">
-                        <mat-error *ngIf="password.invalid">Please enter the staff's password</mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline" class="center-block">
-                        <mat-label>Fullname</mat-label>
-                        <input matInput type="text" placeholder="Fullname" name="fullname" ngModel required minlength="3" #fullname="ngModel">
-                        <mat-error *ngIf="fullname.invalid">Please enter the staff's full name</mat-error>
-                    </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Email</mat-label>
                         <input matInput type="text" placeholder="Email" name="email" ngModel required minlength="3" #email="ngModel">
-                        <mat-error *ngIf="email.invalid">Please enter the staff's email</mat-error>
+                        <mat-error *ngIf="email.invalid">Please enter your email</mat-error>
                     </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>Password</mat-label>
+                        <input matInput rows="1" type="text" matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" ngModel required #password="ngModel">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+                        <mat-error *ngIf="password.invalid">Please enter a password</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="center-block">
+                        <mat-label>FullName</mat-label>
+                        <input matInput type="text" placeholder="Fullname" name="fullName" ngModel required minlength="3" #fullName="ngModel">
+                        <mat-error *ngIf="fullName.invalid">Please enter your full name</mat-error>
+                    </mat-form-field>
+
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Phone</mat-label>
                         <input matInput type="text" placeholder="Phone" name="phone" ngModel required minlength="3" #phone="ngModel">
-                        <mat-error *ngIf="phone.invalid">Please enter the staff's phone number</mat-error>
+                        <mat-error *ngIf="phone.invalid">Please enter your phone number</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>StaffID</mat-label>
-                        <input matInput type="text" placeholder="StaffID" name="staffID" ngModel required minlength="3" #staffID="ngModel">
-                        <mat-error *ngIf="username.invalid">Please enter the Staff's ID</mat-error>
+                        <input matInput type="text" placeholder="staffID" name="staffID" ngModel required minlength="3" #staffID="ngModel">
+                        <mat-error *ngIf="staffID.invalid">Please enter your staff id</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Position</mat-label>
-                        <input matInput type="text" placeholder="Position" name="position" ngModel required minlength="3" #position="ngModel">
-                        <mat-error *ngIf="username.invalid">Please enter the staff's position</mat-error>
+                        <input matInput type="text" placeholder="position" name="position" ngModel required minlength="3" #position="ngModel">
+                        <mat-error *ngIf="position.invalid">Please enter your position </mat-error>
                     </mat-form-field>
 
+                    <button class="regBtn" mat-raised-button color="accent" type="submit">Register</button>
+
                 </form>
-                <div style="text-align:center; margin-bottom: 40px;">
-                    <button style="margin-right: 100px;" mat-button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                    <button class="" mat-raised-button color="accent" type="submit">Submit</button>
-                </div>
+
             </mat-card>
         </mat-step>
     </mat-stepper>
