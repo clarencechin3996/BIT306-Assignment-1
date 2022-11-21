@@ -13,5 +13,5 @@ export interface Request{
   requesttype: string;
   requestdate: Date;
   remarks: string;
-  volunteerName: string;
+  volunteerUsername: string;
 }

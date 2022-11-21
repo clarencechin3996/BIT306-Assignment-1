@@ -1,29 +1,47 @@
-<mat-toolbar color="primary">
-    <span>
-  <span class="logo">School HELP</span>
+<mat-toolbar color="" class="border-bottom">
+
+
+    <span style="margin-left: 150px;">
+  <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <svg class="bi me-2" width="40" height="32">
+      <use xlink:href="#bootstrap"></use>
+    </svg>
+    <span class="fs-4"><a >School HELP</a>
+    </span>
+    </a>
+    </span>
+    <span class="spacer"></span>
+    <span style="margin-right: 200px;">
+  <ul class="nav nav-pills">
+    <li>
+      <a mat-button routerLink="/school-help-admin-home" routerLinkActive="mat-accent">Home</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/register-school" routerLinkActive="mat-accent">Add School Admin</a>
+    </li>
+
+    <li style="margin-left:10px;">
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon style="transform: scale(1.5); ">account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div mat-menu-item>
+          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill"
+            viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+          </svg><span style="color: black; margin-left: 10px;">{{ user.fullName }}
+          </span>
+
+    </div>
+    <button mat-menu-item><a routerLink="/login">
+            <mat-icon>exit_to_app</mat-icon><span (click)="onLogout()" style="color: black;">Log Out</span>
+          </a>
+        </button>
+
+    </mat-menu>
+    </li>
+    </ul>
     </span>
 
-    <span class="spacer">
-</span>
-    <ul>
-
-        <li style="margin-right: 15px;">
-            <a *ngIf="user">Welcome, {{ user.fullName }}</a>
-        </li>
-        <li>
-            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-      <mat-icon style="transform: scale(1.5); ">account_circle</mat-icon>
-    </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item><a routerLink="/login">
-          <mat-icon>exit_to_app</mat-icon>
-          <span (click)="onLogout()" style="color: black;">Log Out</span>
-        </a>
-          </button>
-            </mat-menu>
-        </li>
-
-
-    </ul>
 
 </mat-toolbar>

@@ -53,13 +53,14 @@ export class AccService{ //Create a account class
 
 
   getSchool(){
-    this.http.get<{message: string, school: any}>('http://localhost:3000/api/schools')
+    this.http.get<{message: string, schools: any}>('http://localhost:3000/api/schools')
     .pipe(map((schoolData)=>{
-      return schoolData.school.map(school =>{
+      return schoolData.schools.map(school =>{
         return{
           schoolname: school.schoolname,
           schooladdress: school.schooladdress,
-          city: school.city
+          city: school.city,
+          schoolId: school._id
         };
       });
     }))
@@ -69,6 +70,10 @@ export class AccService{ //Create a account class
     })// creating new array by copying the old array
   }
 
+  getSchoolUpdateListener(){
+    return this.schoolsUpdated.asObservable();
+  }
+
   addSchool(schoolname: string, schooladdress: string, city: string){ // method to add account with arguments
     const school: School = {schoolId: null as any, schoolname: schoolname, schooladdress: schooladdress, city:city}
     this.http
@@ -76,6 +81,7 @@ export class AccService{ //Create a account class
     .subscribe((responsedata)=>{
       this.school.push(school);
       this.schoolsUpdated.next([...this.school]);
+      console.log(responsedata);
     })
   }
 
@@ -115,8 +121,8 @@ export class AccService{ //Create a account class
     return this.requestsUpdated.asObservable();
   }
 
-  AddRequest( description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string, status: string, school_name: string, city: string, resourcedescription: string, resourcetype: string, resourcenum: string, requesttype: string,requestdate: Date, remarks: string, volunteerName: string){ // method to add account with arguments
-    const request: Request = {requestId: null as any, description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents, status: status, school_name: school_name, city: city, resourcedescription:resourcedescription, resourcetype:resourcetype, resourcenum:resourcenum,  requesttype:requesttype,requestdate:requestdate, remarks:remarks, volunteerName: volunteerName}; // variable storing values of account
+  AddRequest( description: string,datetime: Date, studentlevel: string, numofexpectedstudents: string, status: string, school_name: string, city: string, resourcedescription: string, resourcetype: string, resourcenum: string, requesttype: string,requestdate: Date, remarks: string, volunteerUsername: string){ // method to add account with arguments
+    const request: Request = {requestId: null as any, description: description, datetime: datetime, studentlevel: studentlevel, numofexpectedstudents: numofexpectedstudents, status: status, school_name: school_name, city: city, resourcedescription:resourcedescription, resourcetype:resourcetype, resourcenum:resourcenum,  requesttype:requesttype,requestdate:requestdate, remarks:remarks, volunteerUsername: volunteerUsername}; // variable storing values of account
     this.http
     .post<{message:string}>('http://localhost:3000/api/requests', request)
     .subscribe((responseData)=>{

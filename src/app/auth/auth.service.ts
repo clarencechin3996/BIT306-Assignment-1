@@ -52,12 +52,12 @@ get isLoggedIn() {
         console.log(this.getUser());
       }else if(response.loginUserRole=="School-Admin"){
         this.users = response.loginUser;
-        this.router.navigate(['/submit-request']);
+        this.router.navigate(['/school-admin-home']);
         console.log(true);
         console.log(this.getUser());
       }else{
         this.users = response.loginUser;
-        this.router.navigate(['/register-school']);
+        this.router.navigate(['/school-help-admin-home']);
         console.log(true);
         console.log(this.getUser());
       }
@@ -77,7 +77,7 @@ get isLoggedIn() {
     this.http.post('http://localhost:3000/api/user/signup',authData)
     .subscribe(response=>{
       console.log(response);
-      this.router.navigate(['/login']);
+
 
     })
   }

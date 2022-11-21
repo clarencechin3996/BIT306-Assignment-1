@@ -1,3 +1,4 @@
+import { School } from './../../auth/school.modal';
 import { Component, OnInit } from "@angular/core";
 import { Request } from "src/app/request.modal";
 import { AccService } from "src/app/auth/account.service";
@@ -20,9 +21,12 @@ import { Subscription } from 'rxjs';
 })
 
 export class ViewRequestComponent implements OnInit{
-
-  requests : Request[] =[];
+  private schoolSub: Subscription | undefined;
   private requestsSub: Subscription | undefined;
+
+  school: School[]=[];
+  requests : Request[] =[];
+  newrequest:Request[]=[];
   dataSource!: MatTableDataSource<Request>;
 
   constructor(public dialog: MatDialog, public accService:AccService){}
@@ -33,11 +37,20 @@ export class ViewRequestComponent implements OnInit{
 
   ngOnInit(){
     this.accService.getRequest();
+
     this.requestsSub = this.accService.getRequestUpdateListener().subscribe((requests: Request[])=>{
       this.requests = requests;
-      this.dataSource = new MatTableDataSource(requests);
-
+      for(let i = 0; i < this.requests.length; i++){
+        if(this.requests[i].status=='NEW'){
+          this.newrequest.push(this.requests[i]);
+        };
+      };
+      this.dataSource = new MatTableDataSource(this.newrequest);
     });
+    this.accService.getSchool();
+    this.schoolSub = this.accService.getSchoolUpdateListener().subscribe((school: School[])=>{
+      this.school = school;
+    })
   }
 
   applyFilter(event: Event) {
@@ -53,7 +66,7 @@ export class ViewRequestComponent implements OnInit{
       exitAnimationDuration,
     });
   }
-  
+
 }
 @Component({
   selector: 'request-dialog',

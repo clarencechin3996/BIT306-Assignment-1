@@ -39,6 +39,7 @@ app.post('/api/user/signup', (req, res, next) => {
                 dob: req.body.dob,
                 staffID: req.body.staffID,
                 position: req.body.position,
+                schoolname: req.body.schoolname,
                 role: req.body.role
             });
             user.save()
@@ -124,13 +125,13 @@ app.post("/api/requests", (req, res, next) => {
 
 app.post("/api/schools", (req, res, next) => {
     const school = new School({
-        schoolname: req.body.school_name,
+        schoolname: req.body.schoolname,
         schooladdress: req.body.schooladdress,
         city: req.body.city
     });
     school.save();
 
-    console.loh(school);
+    console.log(school);
     res.status(201).json({
         message: 'School added successfully'
     })
@@ -141,6 +142,15 @@ app.get('/api/requests', (req, res, next) => {
         res.status(200).json({
             message: "Request fetched successfully",
             requests: documents
+        })
+    })
+});
+
+app.get('/api/schools', (req, res, next) => {
+    School.find().then(documents => {
+        res.status(200).json({
+            message: "School fetched successfully",
+            schools: documents
         })
     })
 });

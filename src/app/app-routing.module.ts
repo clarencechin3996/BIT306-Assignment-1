@@ -1,3 +1,5 @@
+import { SchoolHelpAdminHomepageComponent } from './admin/school-help-admin/school-help-admin-homepage.component';
+import { SchoolAdminHomepageComponent } from './admin/school-admin/school-admin-homepage.component';
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { RegisterComponent } from "./auth/register/register.component";
@@ -16,6 +18,8 @@ const routes: Routes = [
   {path: 'submit-request', component: SubmitRequestComponent},
   {path: 'volunteer-home-page', component: HomePageComponent},
   {path: 'review-offer', component: ReviewOfferComponent},
+  {path: 'school-admin-home', component: SchoolAdminHomepageComponent},
+  {path: 'school-help-admin-home', component: SchoolHelpAdminHomepageComponent},
 
 ];
 

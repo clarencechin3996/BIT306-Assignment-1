@@ -1,4 +1,6 @@
 section {
-    height: 930px;
-    overflow: hidden
+    background-color: whitesmoke;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 200px;
 }

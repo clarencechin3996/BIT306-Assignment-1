@@ -1,3 +1,4 @@
+import { AuthService } from './../../auth/auth.service';
 import { User } from './../../auth/user.model';
 import { Component, OnInit } from "@angular/core";
 import { Request } from "src/app/request.modal";
@@ -22,13 +23,17 @@ import { Subscription } from 'rxjs';
 
 export class ReviewOfferComponent implements OnInit{
 
+  user:User;
+  newrequest: Request[]=[];
   requests : Request[] =[];
   users : User[]=[];
   private requestsSub: Subscription | undefined;
   private usersSub: Subscription | undefined;
-
+  newSum = 0;
+  pendSum = 0;
+  acceptSum = 0;
   dataSource!: MatTableDataSource<Request>;
-  constructor(public dialog: MatDialog, public accService:AccService){
+  constructor(public dialog: MatDialog, public accService:AccService, public authService:AuthService){
   }
 
   displayedColumns: string[] = ['Description','School Name', 'City'];
@@ -36,6 +41,8 @@ export class ReviewOfferComponent implements OnInit{
   expandedElement!: Request | null;
 
   ngOnInit(){
+    this.user=this.authService.getUser();
+
     this.accService.getUser();
     this.usersSub = this.accService.getUserUpdateListener().subscribe((users: User[])=>{
       this.users = users;
@@ -44,8 +51,27 @@ export class ReviewOfferComponent implements OnInit{
     this.accService.getRequest();
     this.requestsSub = this.accService.getRequestUpdateListener().subscribe((requests: Request[])=>{
       this.requests = requests;
-      this.dataSource = new MatTableDataSource(requests);
-
+      for(let i = 0; i < this.requests.length; i++){
+        if(this.requests[i].school_name==this.user.schoolname){
+          this.newrequest.push(this.requests[i]);
+        };
+      };
+      this.dataSource = new MatTableDataSource(this.newrequest);
+      for(let i = 0; i < this.newrequest.length; i++){
+          if(this.newrequest[i].status=='NEW'){
+          this.newSum += 1;
+          };
+        };
+      for(let i = 0; i < this.newrequest.length; i++){
+          if(this.newrequest[i].status=='PENDING'){
+          this.pendSum += 1;
+          };
+        };
+        for(let i = 0; i < this.newrequest.length; i++){
+          if(this.newrequest[i].status=='ACCEPTED'){
+          this.acceptSum += 1;
+          };
+        };
     });
   }
   applyFilter(event: Event) {
