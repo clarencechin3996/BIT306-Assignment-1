@@ -26,7 +26,7 @@ export class RegisterSchoolComponent implements OnInit{
   ngOnInit() {
     this.user=this.authService.getUser();
   }
-
+  
 
   onAddAcc(form:NgForm){
     if(form.invalid){

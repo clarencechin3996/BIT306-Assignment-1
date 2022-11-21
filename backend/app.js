@@ -102,7 +102,8 @@ app.post("/api/requests", (req, res, next) => {
         datetime: req.body.datetime,
         studentlevel: req.body.studentlevel,
         numofexpectedstudents: req.body.numofexpectedstudents,
-        status: req.body.status,
+        request_status: req.body.request_status,
+        offer_status: req.body.offer_status,
         school_name: req.body.school_name,
         city: req.body.city,
         resourcedescription: req.body.resourcedescription,
@@ -164,6 +165,32 @@ app.get('/api/user', (req, res, next) => {
     })
 });
 
+app.get("/api/close/:id", (req, res, next) => {
+    const id = req.params.id
+    console.log(id)
+    Request.findById(id).then((request) => {
+        console.log(request);
+        Request.updateOne({ _id: id }, { $set: { "request_status": "CLOSED" } }).then((req) => {
+            res.status(200).json({
+                message: "User fetched successfully",
+                req: req,
+            });
+        })
+    });
+});
+app.get("/api/accept/:id", (req, res, next) => {
+    const id = req.params.id
+    console.log(id)
+    Request.findById(id).then((request) => {
+        console.log(request);
+        Request.updateOne({ _id: id }, { $set: { "offer_status": "ACCEPTED" } }).then((req) => {
+            res.status(200).json({
+                message: "User fetched successfully",
+                req: req,
+            });
+        })
+    });
+});
 
 
 module.exports = app;

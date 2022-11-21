@@ -24,6 +24,7 @@ import { AcceptOfferDialogComponent } from './admin/review-offer/review-offer.co
 import { CloseOfferDialogComponent } from './admin/review-offer/review-offer.component';
 import { SchoolAdminHomepageComponent } from './admin/school-admin/school-admin-homepage.component';
 import { SchoolHelpAdminHomepageComponent } from './admin/school-help-admin/school-help-admin-homepage.component';
+import { CheckRequestComponent } from './volunteer/check-request/check-request';
 
 import { MatSelectModule } from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -54,6 +55,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     HeaderRegisterComponent,
     RegisterComponent,
     HeaderPageComponent,
+    CheckRequestComponent,
     HeaderPage2Component,
     ViewRequestComponent,
     RegisterSchoolComponent,

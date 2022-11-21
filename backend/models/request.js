@@ -18,7 +18,11 @@ const requestSchema = mongoose.Schema({
         type: String,
         required: false
     },
-    status: {
+    request_status: {
+        type: String,
+        required: false
+    },
+    offer_status: {
         type: String,
         required: false
     },

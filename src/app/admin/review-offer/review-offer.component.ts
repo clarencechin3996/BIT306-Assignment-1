@@ -1,12 +1,14 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../../auth/auth.service';
 import { User } from './../../auth/user.model';
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { Request } from "src/app/request.modal";
 import { AccService } from "src/app/auth/account.service";
 import {MatTableDataSource} from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component ({
   selector: 'review-offer',
@@ -58,17 +60,17 @@ export class ReviewOfferComponent implements OnInit{
       };
       this.dataSource = new MatTableDataSource(this.newrequest);
       for(let i = 0; i < this.newrequest.length; i++){
-          if(this.newrequest[i].status=='NEW'){
+          if(this.newrequest[i].request_status=='NEW'){
           this.newSum += 1;
           };
         };
       for(let i = 0; i < this.newrequest.length; i++){
-          if(this.newrequest[i].status=='PENDING'){
+          if(this.newrequest[i].offer_status=='PENDING'){
           this.pendSum += 1;
           };
         };
         for(let i = 0; i < this.newrequest.length; i++){
-          if(this.newrequest[i].status=='ACCEPTED'){
+          if(this.newrequest[i].offer_status=='ACCEPTED'){
           this.acceptSum += 1;
           };
         };
@@ -79,20 +81,23 @@ export class ReviewOfferComponent implements OnInit{
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openAcceptOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openAcceptOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string,element): void {
     this.dialog.open(AcceptOfferDialogComponent, {
       width: '450px',
       height: '180px',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: {dialogelement: element, dialogText: 'eze'}
     });
   }
-  openCloseOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+  openCloseOfferDialog(enterAnimationDuration: string, exitAnimationDuration: string,element): void {
     this.dialog.open(CloseOfferDialogComponent, {
       width: '450px',
       height: '180px',
       enterAnimationDuration,
       exitAnimationDuration,
+      data: {dialogelement: element, dialogText: 'eze'}
+
     });
   }
 }
@@ -101,8 +106,29 @@ export class ReviewOfferComponent implements OnInit{
   templateUrl: 'accept-offer-dialog.component.html',
 })
 
-export class AcceptOfferDialogComponent {
-  constructor(public dialogRef: MatDialogRef<AcceptOfferDialogComponent>) {}
+export class AcceptOfferDialogComponent{
+
+  element
+
+
+constructor(public dialogRef: MatDialogRef<AcceptOfferDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private accountService:AccService, public router:Router, public authService:AuthService) {
+    this.element = this.data.dialogelement;
+ }
+
+
+
+ accpetOffer(){
+   console.log(this.element)
+
+   this.accountService.accpeteOffer(this.element.requestId).subscribe((data)=>{
+     if(data){
+       console.log(data);
+        //window.location.reload();
+
+
+     }
+   })
+  }
 }
 
 @Component({
@@ -111,7 +137,22 @@ export class AcceptOfferDialogComponent {
 })
 
 export class CloseOfferDialogComponent {
-  constructor(public dialogRef: MatDialogRef<CloseOfferDialogComponent>) {}
-}
 
+  element
+  constructor(public dialogRef: MatDialogRef<CloseOfferDialogComponent>,@Inject(MAT_DIALOG_DATA) public data: any,private accountService:AccService, public router:Router) {
+   this.element = this.data.dialogelement;
+}
+closeOffer(){
+  console.log(this.element)
+  this.accountService.closeOffer(this.element.requestId).subscribe((data)=>{
+    if(data){
+      console.log(data);
+      //window.location.reload()
+
+
+
+    }
+  })
+}
+}
 

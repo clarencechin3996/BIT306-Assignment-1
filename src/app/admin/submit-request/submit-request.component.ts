@@ -47,7 +47,7 @@ export class SubmitRequestComponent implements OnInit{
       }
       this.user = this.authService.getUser();
       var today = new Date();
-      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name=this.user.schoolname, form.value.city,form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='tutorial',form.value.requestdate=today,form.value.remarks="-", form.value.volunteerUsername="-");
+      this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.request_status='NEW', form.value.offer_status='-', form.value.school_name=this.user.schoolname, form.value.city,form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='tutorial',form.value.requestdate=today,form.value.remarks="-", form.value.volunteerUsername="-");
       this.snackBar.open("Request Added Successful", "OK", {
         duration: 3000,
         panelClass: ['mat-toolbar', 'mat-primary']
@@ -61,7 +61,7 @@ export class SubmitRequestComponent implements OnInit{
           return;
         }
         var today = new Date();
-        this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.status='NEW', form.value.school_name=this.user.schoolname, form.value.city,form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='resource',form.value.requestdate=today,form.value.remarks="-", form.value.volunteerUsername="-");
+        this.accService.AddRequest(form.value.description, form.value.datetime, form.value.studentlevel, form.value.numofexpectedstudents, form.value.request_status='NEW', form.value.offer_status='-', form.value.school_name=this.user.schoolname, form.value.city,form.value.resourcedescription, form.value.resourcetype, form.value.resourcenum, form.value.requesttype='resource',form.value.requestdate=today,form.value.remarks="-", form.value.volunteerUsername="-");
         this.snackBar.open("Request Added Successful", "OK", {
           duration: 3000,
           panelClass: ['mat-toolbar', 'mat-primary']
