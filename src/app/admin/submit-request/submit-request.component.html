@@ -7,17 +7,17 @@
                     <h3 style="text-align: center;">Tutorial Request</h3>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Description of Request</mat-label>
-                        <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="3" #description="ngModel">
+                        <input matInput type="text" placeholder="Description" name="description" ngModel required minlength="1" #description="ngModel">
                         <mat-error *ngIf="description.invalid">Please enter the description of request</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Proposed Date and Time</mat-label>
-                        <input matInput type="datetime-local" placeholder="Date and Time" name="datetime" ngModel required minlength="3" #datetime="ngModel">
+                        <input matInput type="datetime-local" placeholder="Date and Time" name="datetime" ngModel required minlength="1" #datetime="ngModel">
                         <mat-error *ngIf="datetime.invalid">Please select a Date and Time</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">
                         <mat-label>Student Level</mat-label>
-                        <input matInput type="text" placeholder="Student Level" name="studentlevel" ngModel required minlength="3" #studentlevel="ngModel">
+                        <input matInput type="text" placeholder="Student Level" name="studentlevel" ngModel required minlength="1" #studentlevel="ngModel">
                         <mat-error *ngIf="studentlevel.invalid">Please enter the Student Level</mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="outline" class="center-block">

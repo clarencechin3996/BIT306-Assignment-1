@@ -106,7 +106,9 @@
                     <div>
                         <p style="margin-left: 0;">Offer Date: {{element.requestdate.slice(0,10)}}</p>
                     </div>
-
+                    <div>
+                        <p style="margin-left: 0;">Status: {{element.offer_status}}</p>
+                    </div>
                     <div *ngIf="users.length>0">
                         <div *ngFor="let user of users">
                             <div *ngIf="user.fullName==element.volunteerUsername">
@@ -133,7 +135,7 @@
 
                         <button *ngIf="element.offer_status == 'PENDING'" mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openAcceptOfferDialog('0ms', '0ms',element)">Accept Offer</button>&nbsp;
 
-                        <button *ngIf="element.offer_status == 'ACCEPTED'" mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openCloseOfferDialog('0ms', '0ms',element)">Close Offer</button>
+                        <button *ngIf="element.request_status == 'NEW'" mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openCloseOfferDialog('0ms', '0ms',element)">Close Offer</button>
 
                         <p><br></p>
                     </mat-action-row>

@@ -192,5 +192,20 @@ app.get("/api/accept/:id", (req, res, next) => {
     });
 });
 
+app.get("/api/submitoffer/:id", (req, res, next) => {
+    const id = req.params.id
+    const volunteerUsername = req.params.volunteerUsername;
+    console.log(id)
+    Request.findById(id).then((request) => {
+        console.log(request);
+        Request.updateOne({ _id: id }, { $set: { "offer_status": "PENDING", "volunteerUsername": volunteerUsername } }).then((req) => {
+            res.status(200).json({
+                message: "User fetched successfully",
+                req: req,
+            });
+        })
+    });
+});
+
 
 module.exports = app;

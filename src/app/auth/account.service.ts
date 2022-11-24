@@ -143,4 +143,10 @@ export class AccService{ //Create a account class
 
     }
 
+    submitOffer(id, volunteerUsername):any{
+      return  this.http
+       .get<{message:string,volunteerUsername:string}>('http://localhost:3000/api/submitoffer/'+id)
+
+     }
+
 }
