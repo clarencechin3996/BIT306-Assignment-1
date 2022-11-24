@@ -4,7 +4,8 @@ export interface Request{
   datetime: Date;
   studentlevel: string;
   numofexpectedstudents: string;
-  status: string;
+  request_status: string;
+  offer_status: string;
   school_name: string;
   city: string;
   resourcedescription: string;

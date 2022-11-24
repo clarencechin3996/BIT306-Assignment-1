@@ -1,6 +1,11 @@
 <just-header></just-header>
 
+
+
 <section>
+    <br>
+    <h2 style="text-align:center;">Your request</h2><br>
+
     <mat-form-field appearance="standard" class="filter">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
@@ -45,6 +50,13 @@
             </td>
         </ng-container>
 
+        <ng-container matColumnDef="Status">
+            <th mat-header-cell *matHeaderCellDef style="width: 250px;">
+                <mat-icon>info</mat-icon> <span class="aligned-with-icon ">Status</span></th>
+            <td mat-cell *matCellDef="let element">
+                {{element.offer_status}}
+            </td>
+        </ng-container>
         <ng-container matColumnDef="expand">
             <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
 
@@ -86,9 +98,7 @@
                     <br>
                     <hr>
                     <mat-action-row style="float: left;">
-                        <br>
-                        <button mat-button color="primary" mat-raised-button color="accent" mat-button (click)="openDialog('0ms', '0ms',element)">Submit Offer</button>
-                        <p><br></p>
+
                     </mat-action-row>
                 </div>
             </td>

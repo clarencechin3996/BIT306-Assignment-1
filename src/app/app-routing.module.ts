@@ -1,3 +1,4 @@
+import { CheckRequestComponent } from './volunteer/check-request/check-request';
 import { SchoolHelpAdminHomepageComponent } from './admin/school-help-admin/school-help-admin-homepage.component';
 import { SchoolAdminHomepageComponent } from './admin/school-admin/school-admin-homepage.component';
 import { NgModule } from "@angular/core";
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'volunteer-home-page', component: HomePageComponent},
   {path: 'review-offer', component: ReviewOfferComponent},
   {path: 'school-admin-home', component: SchoolAdminHomepageComponent},
+  {path: 'check-view-request', component: CheckRequestComponent},
   {path: 'school-help-admin-home', component: SchoolHelpAdminHomepageComponent},
 
 ];
